@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url(Pictures/599379.jpg) no-repeat center center/cover;
+      min-height: 100vh;
+
+      backdrop-filter: blur(7px);
+    }
+
+    .wall {
+      width: 420px;
+      background-color: rgba(19, 54, 134, 0.5);
+      color: white;
+      border-radius: 10px;
+      padding: 30px 40px;
+      border: 2px solid rgb(255, 255, 255, 0.3);
+      box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+    }
+
+    .wall h1 {
+      text-align: center;
+      font-size: 36px;
+    }
+
+    .wall a {
+      text-decoration: none;
+      color: red;
+      font-size: 24px;
+      transition: 0.3 ease;
+    }
+    a :hover {
+      color: blue;
+    }
+
+    /* Container for the profile */
+    .simple-profile {
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* Profile picture styling */
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 8px;
+    }
+
+    /* Profile name styling */
+    .profile-name {
+      font-size: 1rem;
+      color: #333;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    /* Responsive styling */
+    @media (max-width: 600px) {
+      .profile-pic {
+        width: 70px;
+        height: 70px;
+      }
+      .profile-name {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <body>
+    <div class="wall">
+      <h1>Profile</h1>
+
+      <div class="simple-profile">
+        <img
+          src="9c8d21d8-65fc-467b-8242-20bbbefd0f70.jfif"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+        <p class="profile-name">John Doe</p>
+        <br />
+        <a href="">Signout</a>
+      </div>
+    </div>
+  </body>
+</html>
