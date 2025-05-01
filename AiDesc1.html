@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Movie Description</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Georgia", serif;
+      }
+
+      .container {
+        height: 100vh;
+        background: linear-gradient(to bottom, #fff8f0 30%, #ffc371 30%);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container .genre a {
+        position: relative;
+        display: inline-block;
+        left: -17vw;
+      }
+
+      .center-image {
+        align-self: center;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 30%;
+        transform: translateY(-50%);
+        left: 10%;
+        z-index: 2;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        transition: 1.2s ease;
+      }
+
+      .center-image:hover {
+        border-radius: 0%;
+      }
+
+      .description {
+        margin-top: 15%;
+        width: 60%;
+        text-align: justify;
+        color: #333;
+        font-size: 1.2em;
+        line-height: 1.6;
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      }
+
+      .genre a {
+        text-decoration: none;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        color: #ff69b4;
+        text-shadow: 3px 3px #ffe4e1;
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        background: transparent;
+        padding: 10px 20px;
+        border-radius: 50px;
+        border: 2px solid #f0f0f0;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .container .navi {
+        position: relative;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        bottom: -15%;
+      }
+
+      .container .navi a {
+        border-radius: 3px;
+        background-color: #ffe4c4;
+        justify-content: space-around;
+        display: inline-block;
+        margin-right: 15px;
+        /*transform: translateX(150px);*/
+        justify-self: center;
+        list-style: none;
+        padding: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        color: #2c2c2c;
+        font-size: 1.2em;
+      }
+
+      .navi a:hover {
+        background-color: #ff8a65;
+      }
+
+      /*.tail {
+            background-color:#ffc371 ;
+              transform: translateX(200px);
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+              gap: 25px;
+              max-width: 1800px;
+              padding: 20px;
+              color:	#f4f7f9 ;
+          }
+
+          .tail a{
+              color: #2c2c2c;
+              text-decoration: none;
+              font-weight: 700;
+              transition:  0.5s ease;
+
+          }
+
+          .tail a:hover{
+              color: aliceblue;
+          }*/
+
+      .tail {
+        background-color: #ffc371;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 25px;
+        max-width: 1800px;
+        margin: 0 auto; /* centers the content */
+        padding: 40px 20px;
+        color: #2c2c2c;
+        text-align: left;
+      }
+
+      .tail a {
+        color: #2c2c2c;
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+
+      .tail a:hover {
+        color: #ffffff;
+      }
+
+      @media (max-width: 1024px) {
+        header {
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+          text-align: center;
+        }
+
+        .ainav {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-top: 10px;
+        }
+
+        .ainav a {
+          margin: 5px;
+          font-size: 1em;
+        }
+
+        .profile-container {
+          position: static;
+          margin-top: 10px;
+        }
+
+        .slider .description {
+          font-size: 1.2rem;
+          padding: 10px 15px;
+          left: 5%;
+          bottom: 15%;
+        }
+
+        .slider::after {
+          width: 50%;
+        }
+
+        .slider .controls button {
+          padding: 8px 16px;
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .movie-container {
+          grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+          padding: 10px;
+          transform: none;
+        }
+
+        .poster {
+          height: 180px;
+        }
+
+        .poster img {
+          height: 180px;
+        }
+
+        .details h3 {
+          font-size: 13px;
+        }
+
+        .details p {
+          font-size: 11px;
+        }
+
+        .tail {
+          grid-template-columns: 1fr 1fr;
+          gap: 15px;
+          padding: 20px;
+        }
+
+        .navi {
+          text-align: center;
+          transform: none;
+        }
+
+        .navi a {
+          font-size: 1em;
+          margin: 5px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .slider {
+          height: 80vh;
+        }
+
+        .slider .description {
+          font-size: 1rem;
+          bottom: 10%;
+          left: 5%;
+          padding: 8px 12px;
+        }
+
+        .slider .controls {
+          padding: 10px;
+        }
+
+        .slider .controls button {
+          font-size: 0.9rem;
+          padding: 8px 12px;
+        }
+
+        .movie-card {
+          width: 100%;
+        }
+
+        .tail {
+          grid-template-columns: 1fr;
+          padding: 15px;
+          font-size: 14px;
+        }
+
+        .tail a {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="Pictures/download (10).jpg"
+        alt="Movie Thumbnail"
+        class="center-image"
+      />
+      <div class="description">
+        <p><strong>Movie Title:</strong> The Enchanted Garden</p>
+        <p>
+          An inspiring tale of magic and discovery, where a young girl uncovers
+          a world of wonder hidden within an abandoned garden. A beautiful mix
+          of fantasy, heart, and resilience.
+        </p>
+      </div>
+      <div class="genre">
+        <a href="">Fantasy</a>
+        <a href="">Drama</a>
+        <a href="">Adventure</a>
+        <a href="">Mystery</a>
+      </div>
+      <br /><br /><br /><br />
+      <div class="navi">
+        <a href="">A</a>
+        <a href="">B</a>
+        <a href="">C</a>
+        <a href="">D</a>
+        <a href="">E</a>
+        <a href="">F</a>
+        <a href="">G</a>
+        <a href="">H</a>
+        <a href="">I</a>
+        <a href="">J</a>
+        <a href="">K</a>
+        <a href="">L</a>
+        <a href="">M</a>
+        <a href="">N</a>
+        <a href="">O</a>
+        <a href="">P</a>
+        <a href="">Q</a>
+        <a href="">R</a>
+        <a href="">S</a>
+        <a href="">U</a>
+        <a href="">V</a>
+        <a href="">W</a>
+        <a href="">X</a>
+        <a href="">Y</a>
+        <a href="">Z</a>
+      </div>
+    </div>
+  </body>
+</html>
