@@ -213,7 +213,7 @@ h1 {
   overflow: hidden;
   display: flex;
   align-items: center;
-  border: 2px solid #ddd;
+  /*border: 2px solid #ddd;*/
   border-radius: 0px;
 }
 
