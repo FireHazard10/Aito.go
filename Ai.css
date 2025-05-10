@@ -487,6 +487,138 @@ h2 {
   }
 }
 
+@media (max-width: 1150px) {
+  .movie-container {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    padding: 10px;
+    transform: none;
+  }
+
+  .poster {
+    height: 180px;
+  }
+
+  .poster img {
+    height: 180px;
+  }
+
+  .details h3 {
+    font-size: 13px;
+  }
+
+  .details p {
+    font-size: 11px;
+  }
+
+  .slider {
+    height: 35vh;
+  }
+
+  .tail {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .navi {
+    text-align: center;
+    transform: none;
+  }
+
+  .navi a {
+    font-size: 1em;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 1450px) {
+  .movie-container {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    padding: 10px;
+    transform: none;
+  }
+
+  .poster {
+    height: 180px;
+  }
+
+  .poster img {
+    height: 180px;
+  }
+
+  .details h3 {
+    font-size: 13px;
+  }
+
+  .details p {
+    font-size: 11px;
+  }
+
+  .slider {
+    height: 90vh;
+  }
+
+  .tail {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .navi {
+    text-align: center;
+    transform: none;
+  }
+
+  .navi a {
+    font-size: 1em;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 890px) {
+  .movie-container {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    padding: 10px;
+    transform: none;
+  }
+
+  .poster {
+    height: 180px;
+  }
+
+  .poster img {
+    height: 180px;
+  }
+
+  .details h3 {
+    font-size: 13px;
+  }
+
+  .details p {
+    font-size: 11px;
+  }
+
+  .slider {
+    height: 20vh;
+  }
+
+  .tail {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .navi {
+    text-align: center;
+    transform: none;
+  }
+
+  .navi a {
+    font-size: 1em;
+    margin: 5px;
+  }
+}
+
 @media (max-width: 768px) {
   .movie-container {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -510,6 +642,10 @@ h2 {
     font-size: 11px;
   }
 
+  .slider {
+    height: 40vh;
+  }
+
   .tail {
     grid-template-columns: 1fr 1fr;
     gap: 15px;
@@ -529,7 +665,7 @@ h2 {
 
 @media (max-width: 480px) {
   .slider {
-    height: 80vh;
+    height: 25vh;
   }
 
   .slider .description {
@@ -540,12 +676,20 @@ h2 {
   }
 
   .slider .controls {
-    padding: 10px;
+    padding: 0px;
   }
 
   .slider .controls button {
     font-size: 0.9rem;
     padding: 8px 12px;
+  }
+
+  #next {
+    padding: 35px 10px 35px;
+  }
+
+  #prev {
+    padding: 35px 10px 35px;
   }
 
   .movie-card {
@@ -562,6 +706,7 @@ h2 {
     font-size: 14px;
   }
 }
+
 
 .search-dropdown {
   display: none;
