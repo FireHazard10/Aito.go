@@ -565,7 +565,7 @@
         .One-plus{
             display: flex;
             flex-direction: column;
-            width: 70%;
+            width: 100%;
             border-radius: 10px;
             overflow: hidden;
             background-color: #444;
@@ -700,6 +700,24 @@
         cursor: pointer;
       }
 
+        .container {
+        position: relative;
+        justify-self: center;
+        justify-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @media screen and (max-width: 767px){
+        .One-plus{
+          border-radius: 0;
+        }
+        .container{
+          grid-template-columns: repeat(1, 1fr);
+          gap: 10px;
+        }
+      }
+
 
     </style>
 
@@ -771,8 +789,8 @@
     </div>
     <br><br><br>
 
-    <div class="exp">
-        <section class="One-plus"><p>
+         <div class="container">
+        <div class="One-plus"><p>
             Title: Neon Requiem<br>
             Genre: Cyberpunk, Sci-Fi, Action, Thriller<br>
             Episodes: 14<br>
@@ -782,9 +800,7 @@
             
             With pulse-pounding action, mind-bending tech, and a haunting synth soundtrack, Neon Requiem is a stylish descent into a world where humanity flickers like a dying signal, and salvation might just lie in the ghost of a machine.
             
-            </p></section>
-        <section class="Two-plus">
-            <section class="Pic-slide" id="Pic-slide">
+            </p></div>
                 <div class="slider">
                     <div class="images">
                       <div class="image">
@@ -857,10 +873,12 @@
                       <button id="next">&#10095;</button>
                     </div>
                   </div>          
-            </section><br><br><br>
-        </section>
-    </div>
 
+     </div>
+    
+            <br><br><br>
+        
+    </div>
 
 
     </section>
