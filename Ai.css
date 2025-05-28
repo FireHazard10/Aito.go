@@ -11,7 +11,7 @@ body {
   background: #fff8f0;
 }
 
-header {
+/*header {
   background-color: #ffc371;
   display: flex;
   position: relative;
@@ -22,7 +22,7 @@ header {
   padding: 20px;
   font-weight: 500;
   box-shadow: 0 0 8px rgba(233, 30, 99, 0.6);
-}
+}*/
 h1 {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-size: 35px;
@@ -90,7 +90,7 @@ h1 {
   color: #111;
 }*/
 
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   header {
     flex-direction: column;
     text-align: center;
@@ -118,7 +118,7 @@ h1 {
 }
 
 /* Profile icon styling */
-.profile-icon {
+/*.profile-icon {
   background: url(Pictures/Animated\ Character\ Design_\ Tips\ for\ Creating\ Engaging\ Characters.jfif)
     no-repeat center center/cover;
   border-radius: 50px;
@@ -133,7 +133,7 @@ h1 {
 }
 
 /* Profile details styling */
-.profile-details {
+/*.profile-details {
   position: absolute;
   top: 60px;
   left: 50%;
@@ -152,20 +152,20 @@ h1 {
 }
 
 /* Profile details styling on hover */
-.profile-container:hover .profile-details {
+/*.profile-container:hover .profile-details {
   opacity: 1;
   visibility: visible;
 }
 
 /* Username styling */
-.username {
+/*.username {
   margin: 0;
   font-weight: bold;
   color: #333;
 }
 
 /* Profile and logout link styling */
-.profile-link,
+/*.profile-link,
 .logout-link {
   display: block;
   margin-top: 8px;
@@ -310,7 +310,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 25px;
-  max-width: 1400px;
+  max-width: 1200px;
   padding: 20px;
 }
 
@@ -446,7 +446,7 @@ h2 {
 }
 
 @media (max-width: 1024px) {
-  header {
+  /*header {
     flex-direction: column;
     align-items: center;
     padding: 10px;
@@ -468,7 +468,7 @@ h2 {
   .profile-container {
     position: static;
     margin-top: 10px;
-  }
+  }*/
 
   .slider .description {
     font-size: 1.2rem;
@@ -577,7 +577,7 @@ h2 {
 
 @media (max-width: 890px) {
   .movie-container {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     padding: 10px;
     transform: none;
   }
@@ -621,7 +621,7 @@ h2 {
 
 @media (max-width: 768px) {
   .movie-container {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     padding: 10px;
     transform: none;
   }
