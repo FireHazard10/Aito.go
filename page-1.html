@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
    
     <style>
         * {
@@ -19,7 +21,7 @@
             background: #fff8f0;
           }
           
-          header {
+         /* header {
             background-color: #ffc371;
             display: flex;
             position: relative;
@@ -294,7 +296,7 @@
           }
           
           @media (max-width: 1024px) {
-            header {
+            /*header {
               flex-direction: column;
               align-items: center;
               padding: 10px;
@@ -316,13 +318,13 @@
             .profile-container {
               position: static;
               margin-top: 10px;
-            }
+            }*/
           
         }
           
           @media (max-width: 768px) {
             .movie-container {
-              grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+              grid-template-columns: repeat(2, 1fr);
               padding: 10px;
               transform: none;
             }
@@ -434,7 +436,7 @@
         }
         @media (max-width: 600px) {
           .movie-container {
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            grid-template-columns:repeat(2, 1fr));
           }
           .poster img {
             height: 180px;
@@ -447,42 +449,99 @@
 
 </head>
 <body>
-    <header>
-        <h1>Ai.to</h1>
-        <div class="ainav">
-            <a href="index.html">Home</a>
-            <a href="#" id="searchToggle" class="dropdown-trigger">&#9662; Search</a>
-            
-           <a href="">Random</a>   
-           <a href="">Contact Us</a>   
-           <a href="">About us</a>   
-        </div>
-        <div class="dropdown-container">
-                
-            <div class="search-dropdown" id="searchDropdown">
-              <form class="search-form">
-                <input type="text" id="searchInput" placeholder="Search for anime, manga, or characters..." />
-                <button type="submit">Go</button>
-                <ul id="suggestionsList"></ul>
-              </form>
-            </div>
-          </div>  
-
-        <div class="profile-container">
-            <div class="profile-icon">
-             
-            </div>
-            <div class="profile-details">
-              <p class="username">John Doe</p>
-              <a href="Profilepage.html" class="profile-link">View Profile</a>
-              <a href="Registration.html" class="logout-link">Sign up</a>
-              <a href="Signinpage.html" class="logout-link">Login</a>
-              <a href="signoutpage.html" class="logout-link">Logout</a>
-            </div>
+   <header
+      class="relative bg-gradient-to-b from-black/90 to-transparent"
+      x-data="{ open: false }"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-6">
+          <!-- Logo -->
+          <div class="text-2xl font-bold text-pink-500 tracking-wide">
+            Ani<span class="text-white">Media</span>
           </div>
-    </header>
-    
 
+          <!-- Desktop Nav -->
+          <nav class="hidden md:flex space-x-6 text-white/90 font-medium">
+            <a href="#" class="hover:text-pink-400 transition">Home</a>
+            <a href="#" class="hover:text-pink-400 transition">Series</a>
+            <a href="#" class="hover:text-pink-400 transition">Movies</a>
+            <a href="#" class="hover:text-pink-400 transition">Genres</a>
+          </nav>
+
+          <!-- CTA Button (Desktop) -->
+          <div class="hidden md:block">
+            <a
+              href="#"
+              class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-xl shadow-md transition"
+            >
+              Join Now
+            </a>
+          </div>
+
+          <!-- Hamburger Icon (Mobile) -->
+          <div class="md:hidden">
+            <button @click="open = !open" class="text-white focus:outline-none">
+              <svg
+                x-show="!open"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              <svg
+                x-show="open"
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div
+          x-show="open"
+          class="md:hidden flex flex-col gap-4 mt-2 text-white/90 font-medium"
+        >
+          <a href="#" class="hover:text-pink-400 transition">Home</a>
+          <a href="#" class="hover:text-pink-400 transition">Series</a>
+          <a href="#" class="hover:text-pink-400 transition">Movies</a>
+          <a href="#" class="hover:text-pink-400 transition">Genres</a>
+          <a
+            href="#"
+            class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-xl w-fit mt-2 transition"
+          >
+            Join Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      
+
+      <!-- Optional Background Image -->
+      <div
+        class="absolute inset-0 -z-10 bg-cover bg-center opacity-20"
+        style="background-image: url('https://yourimageurl.com/anime-bg.jpg')"
+      ></div>
+    </header>
     <section class="grid">
         <div class="movie-container">
             <div class="movie-card">
