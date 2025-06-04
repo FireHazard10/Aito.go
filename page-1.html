@@ -86,7 +86,7 @@
           }
           
           /* Profile icon styling */
-          .profile-icon {
+          /*.profile-icon {
             background: url(Pictures/Animated\ Character\ Design_\ Tips\ for\ Creating\ Engaging\ Characters.jfif)
               no-repeat center center/cover;
             border-radius: 50px;
@@ -101,7 +101,7 @@
           }
           
           /* Profile details styling */
-          .profile-details {
+          /*.profile-details {
             position: absolute;
             top: 60px;
             left: 50%;
@@ -993,13 +993,13 @@
     
 
 
-  const toggleLink = document.getElementById("searchToggle");
-  const dropdown = document.getElementById("searchDropdown");
-  const searchInput = document.getElementById("searchInput");
-  const suggestionsList = document.getElementById("suggestionsList");
+  //const toggleLink = document.getElementById("searchToggle");
+  //const dropdown = document.getElementById("searchDropdown");
+ // const searchInput = document.getElementById("searchInput");
+ // const suggestionsList = document.getElementById("suggestionsList");
   
   // Example search data
-  const suggestions = [
+  //const suggestions = [
     "Kimi Ga Nozomu Eien (2003)",
     "Rurouni Kenshin - Reminiscence (1999)",
     "Fullmetal Alchemist (2003)",
@@ -1200,49 +1200,49 @@
     "Dragon Ball Z (1989)",
     "Samurai Deeper Kyo (2002) ",
     "Ikkitousen (2003)",
-  ];
+  //];
   
   // Toggle dropdown
-  toggleLink.addEventListener("click", function (e) {
-    e.preventDefault();
-    dropdown.classList.toggle("show");
-  });
+  //toggleLink.addEventListener("click", function (e) {
+   // e.preventDefault();
+    //dropdown.classList.toggle("show");
+  //});
   
   // Close dropdown if clicked outside
-  document.addEventListener("click", function (e) {
-    if (!toggleLink.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.remove("show");
-    }
-  });
+ // document.addEventListener("click", function (e) {
+   // if (!toggleLink.contains(e.target) && !dropdown.contains(e.target)) {
+     // dropdown.classList.remove("show");
+   // }
+ // });
   
   // Search suggestion functionality
-  searchInput.addEventListener("input", function () {
-    const input = searchInput.value.toLowerCase();
-    suggestionsList.innerHTML = ""; // Clear old suggestions
+ // searchInput.addEventListener("input", function () {
+    //const input = searchInput.value.toLowerCase();
+   // suggestionsList.innerHTML = ""; // Clear old suggestions
   
-    if (input) {
-      const filteredSuggestions = suggestions.filter((item) =>
-        item.toLowerCase().includes(input)
-      );
+   // if (input) {
+     // const filteredSuggestions = suggestions.filter((item) =>
+     //   item.toLowerCase().includes(input)
+      //);
   
-      filteredSuggestions.forEach(function (suggestion) {
-        const li = document.createElement("li");
-        li.textContent = suggestion;
-        li.addEventListener("click", function () {
-          searchInput.value = suggestion; // Fill input when clicked
-          suggestionsList.innerHTML = ""; // Clear suggestions
-        });
-        suggestionsList.appendChild(li);
-      });
-    }
-  });
+     // filteredSuggestions.forEach(function (suggestion) {
+      //  const li = document.createElement("li");
+       // li.textContent = suggestion;
+        //li.addEventListener("click", function () {
+        //  searchInput.value = suggestion; // Fill input when clicked
+         // suggestionsList.innerHTML = ""; // Clear suggestions
+       // });
+        //suggestionsList.appendChild(li);
+      //});
+    //}
+  //});
   
 
 
 
     let currentPage = 1; // page-1.html is current
-const totalPages = 5;
-const pages = ["page-1.html","page-2.html","page-3.html","page-4.html","page-5.html"];
+const totalPages = 3;
+const pages = ["page-1.html","page-2.html","page-3.html"];
 
 const prevButton = document.getElementById('prevBtn');
 const nextButton = document.getElementById('nextBtn');
