@@ -266,25 +266,29 @@ h2 {
   border-radius: 8px;
 }
 
-.navi a {
-  border-radius: 3px;
-  background-color: #ffe4c4;
-  justify-content: space-around;
-  display: inline-block;
-  margin-right: 15px;
-  transform: translateX(150px);
-  list-style: none;
-  padding: 10px;
-  text-decoration: none;
-  cursor: pointer;
-  color: #2c2c2c;
-  font-size: 1.2em;
-}
-
-.navi a:hover {
-  background-color: #ff8a65;
-}
-
+.rec{
+            margin: auto;
+          }
+          
+          .navi a {
+            border-radius: 3px;
+            background-color: #ffe4c4;
+            justify-content: space-around;
+            display: inline-block;
+            margin-right: 15px;
+            /*transform: translateX(150px);*/
+            list-style: none;
+            padding: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            color: #2c2c2c;
+            font-size: 1.2em;
+          }
+          
+          .navi a:hover {
+            background-color: #ff8a65;
+          }
+          
 .tail {
   background-color: #ffc371;
   display: grid;
