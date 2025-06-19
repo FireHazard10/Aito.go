@@ -307,6 +307,7 @@ h2 {
    .movie-container {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     padding: 10px;
+    max-width: 1024px;
     transform: none;
   }
 
@@ -331,6 +332,7 @@ h2 {
   .movie-container {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     padding: 10px;
+    max-width: 1150px;
     transform: none;
   }
 
@@ -375,6 +377,7 @@ h2 {
   .movie-container {
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     padding: 10px;
+    max-width: 1450px;
     transform: none;
   }
 
@@ -417,7 +420,8 @@ h2 {
 
 @media (max-width: 890px) {
   .movie-container {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    max-width: 890px;
     padding: 10px;
     transform: none;
   }
