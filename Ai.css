@@ -417,7 +417,7 @@ h2 {
 
 @media (max-width: 890px) {
   .movie-container {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     padding: 10px;
     transform: none;
   }
