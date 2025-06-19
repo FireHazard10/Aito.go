@@ -417,7 +417,7 @@ h2 {
 
 @media (max-width: 890px) {
   .movie-container {
-    grid-template-columns:  repeat(auto-fit, minmax(4, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     padding: 10px;
     transform: none;
   }
@@ -461,7 +461,7 @@ h2 {
 
 @media (max-width: 768px) {
   .movie-container {
-    grid-template-columns: repeat(2 , 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     padding: 10px;
     transform: none;
   }
