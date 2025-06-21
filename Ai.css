@@ -304,12 +304,6 @@ h2 {
 }
 
 @media (max-width: 1024px) {
-   .movie-container {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    padding: 10px;
-    max-width: 1024px;
-    transform: none;
-  }
 
   .slider .description {
     font-size: 1.2rem;
@@ -465,7 +459,7 @@ h2 {
 
 @media (max-width: 768px) {
   .movie-container {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
     padding: 10px;
     transform: none;
   }
