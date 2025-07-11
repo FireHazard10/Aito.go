@@ -447,3 +447,101 @@ h2 {
     font-size: 1.5rem;
   }
 }
+
+.updown {
+  width: 93%;
+  margin: auto;
+}
+.Update {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.clock {
+  font-size: 1.2rem;
+  background: #f472b6;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  color: #f0f2f5;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.week-container {
+  position: relative;
+}
+
+.scroll-buttons {
+  position: absolute;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-right: 10px;
+  padding-left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: #f1e7e7;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.scroll-left {
+  left: -1.5rem;
+}
+
+.scroll-right {
+  right: -1.5rem;
+}
+
+.week-days {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.day-card {
+  min-width: 200px;
+  background: linear-gradient(to bottom, #f472b6, transparent);
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.day-card h3 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  margin-bottom: 0.5rem;
+  color: #0077cc;
+}
+
+.day-card a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  margin: 0.3rem 0;
+}
+
+.day-card a:hover {
+  color: #0077cc;
+}
+
+/* Hide scrollbar */
+.week-days::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .updown {
+    width: 83%;
+  }
+  .day-card {
+    min-width: 160px;
+  }
+}
