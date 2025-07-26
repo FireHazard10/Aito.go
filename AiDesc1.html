@@ -3,338 +3,313 @@
   <head>
     <meta charset="UTF-8" />
     <title>Movie Description</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Oxanium:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body {
-        margin: 0;
-        font-family: "Georgia", serif;
+      :root {
+        --background: linear-gradient(to bottom, #fff8f0 30%, #ffc371 30%);
+        --text-color: #2c2c2c;
+        --card-bg: #ffffffd9;
+        --accent: #ff69b4;
+        --tag-bg: transparent;
+        --tag-border: #f0f0f0;
+        --foot: #2c2c2c;
+        --end: #ccc;
       }
 
-      .container {
-        height: 100vh;
-        background: linear-gradient(to bottom, #fff8f0 30%, #ffc371 30%);
-        position: relative;
+      body.dark {
+        --background: radial-gradient(circle at top, #0f0f0f, #1a1a1a);
+        --text-color: #e0f7fa;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --accent: #00e5ff;
+        --tag-bg: transparent;
+        --tag-border: #00e5ff;
+        --end: #00e5ff;
+        --foot: linear-gradient(circle at top, #1a1a1a, #0f0f0f);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        transition: background 0.5s, color 0.5s;
+      }
+
+      body {
+        font-family: "Oxanium", sans-serif;
+        background: var(--background);
+        color: var(--text-color);
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--accent);
+      }
+
+      span {
+        color: white;
+      }
+
+      .toggle-theme {
+        font-size: 1rem;
+        background: none;
+        border: 2px solid var(--accent);
+        padding: 0.4rem 0.8rem;
+        color: var(--accent);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .toggle-theme:hover {
+        background: var(--accent);
+        color: #111;
+      }
+
+      .main-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 2rem;
+        min-height: 100vh;
       }
 
-      .container .genre a {
-        position: relative;
-        display: inline-block;
-        left: -17vw;
+      .card {
+        grid-area: card-0;
+        background: var(--card-bg);
+        border: 1px solid var(--tag-border);
+        border-radius: 20px;
+        padding: 2rem;
+        max-width: 900px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        transition: all 0.4s ease;
       }
 
       .center-image {
-        align-self: center;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 30%;
-        transform: translateY(-50%);
-        left: 10%;
-        z-index: 2;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
+        width: 200px;
+        height: 200px;
         object-fit: cover;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        transition: 1.2s ease;
+        border-radius: 20px;
+        box-shadow: 0 0 20px var(--accent);
+        transition: 0.3s;
       }
 
       .center-image:hover {
-        border-radius: 0%;
+        transform: scale(1.05) rotate(2deg);
       }
 
       .description {
-        align-self: center;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 42%;
-        transform: translateY(-50%);
-        left: 20%;
-        margin-top: 0%;
-        width: 60%;
-        text-align: justify;
-        color: #f0f0f0;
-        font-size: 25px;
-        line-height: 1.6;
-        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+        flex: 1;
+        font-size: 1.1rem;
+      }
+
+      .description strong {
+        font-size: 1.4rem;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 0.5rem;
       }
 
       .genre {
-        align-self: center;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 55%;
-        transform: translateY(-50%);
-        left: 37%;
-        margin-top: 10px;
-      }
-      .genre a {
-        text-decoration: none;
-        font-family: "M PLUS Rounded 1c", sans-serif;
-        color: #ff69b4;
-        text-shadow: 3px 3px #ffe4e1;
-        position: relative;
+        grid-area: genre;
         display: flex;
-        justify-content: space-around;
-        margin-top: 20px;
-        background: transparent;
-        padding: 10px 20px;
-        border-radius: 50px;
-        border: 2px solid #f0f0f0;
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      .container .navi {
-        align-self: center;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 90%;
-        transform: translateY(-50%);
-        /*left: 10%;*/
-        margin-left: 25px;
+        gap: 10px;
+        margin: 2rem 0;
       }
 
-      .container .navi a {
-        margin-top: 10px;
-        border-radius: 3px;
-        background-color: #ffe4c4;
-        justify-content: space-around;
-        display: inline-block;
-        margin-right: 15px;
-        /*transform: translateX(150px);*/
-        justify-self: center;
-        list-style: none;
-        padding: 10px;
+      .genre a {
+        padding: 10px 20px;
+        border: 2px solid var(--tag-border);
+        border-radius: 30px;
+        color: var(--accent);
+        background: var(--tag-bg);
         text-decoration: none;
-        cursor: pointer;
-        color: #2c2c2c;
-        font-size: 1.2em;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .genre a:hover {
+        background: var(--accent);
+        color: #111;
+        box-shadow: 0 0 10px var(--accent);
+      }
+
+      .navi {
+        grid-area: navi;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .navi a {
+        background: #111;
+        color: var(--accent);
+        padding: 8px 12px;
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
       }
 
       .navi a:hover {
-        background-color: #ff8a65;
+        background: var(--accent);
+        color: #111;
       }
 
-      /*.tail {
-            background-color:#ffc371 ;
-              transform: translateX(200px);
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-              gap: 25px;
-              max-width: 1800px;
-              padding: 20px;
-              color:	#f4f7f9 ;
-          }
-
-          .tail a{
-              color: #2c2c2c;
-              text-decoration: none;
-              font-weight: 700;
-              transition:  0.5s ease;
-
-          }
-
-          .tail a:hover{
-              color: aliceblue;
-          }*/
-
-      .tail {
-        background-color: #ffc371;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 25px;
-        max-width: 1800px;
-        margin: 0 auto; /* centers the content */
-        padding: 40px 20px;
-        color: #2c2c2c;
-        text-align: left;
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: var(--foot);
+        color: var(--end);
       }
 
-      .tail a {
-        color: #2c2c2c;
-        text-decoration: none;
-        font-weight: 700;
-        transition: color 0.3s ease;
+      footer .end {
+        font-size: 2rem;
+        color: var(--accent);
       }
 
-      .tail a:hover {
-        color: #ffffff;
+      footer .end span {
+        color: white;
       }
 
-      @media (max-width: 1024px) {
-        header {
+      footer .footer-links {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      footer hr {
+        border: none;
+        border-top: 1px solid #555;
+        margin: 10px auto 20px;
+        width: 80%;
+      }
+      @media (max-width: 768px) {
+        .watch {
+          transform: translateY(40%);
+          position: relative;
+          display: grid;
+          grid-template-columns: 280px 1fr;
+          grid-template-areas:
+            "card-0"
+            "genre"
+            "navi";
+        }
+
+        .card {
+          grid-area: card-0;
           flex-direction: column;
           align-items: center;
-          padding: 10px;
           text-align: center;
         }
 
-        .ainav {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          margin-top: 10px;
-        }
-
-        .ainav a {
-          margin: 5px;
-          font-size: 1em;
-        }
-
-        .profile-container {
-          position: static;
-          margin-top: 10px;
-        }
-
-        .slider .description {
-          font-size: 1.2rem;
-          padding: 10px 15px;
-          left: 5%;
-          bottom: 15%;
-        }
-
-        .slider::after {
-          width: 50%;
-        }
-
-        .slider .controls button {
-          padding: 8px 16px;
-          font-size: 1rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .movie-container {
-          grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-          padding: 10px;
-          transform: none;
-        }
-
-        .poster {
-          height: 180px;
-        }
-
-        .poster img {
-          height: 180px;
-        }
-
-        .details h3 {
-          font-size: 13px;
-        }
-
-        .details p {
-          font-size: 11px;
-        }
-
-        .tail {
-          grid-template-columns: 1fr 1fr;
-          gap: 15px;
-          padding: 20px;
-        }
-
-        .navi {
+        .description {
           text-align: center;
-          transform: none;
-        }
-
-        .navi a {
-          font-size: 1em;
-          margin: 5px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .slider {
-          height: 80vh;
-        }
-
-        .slider .description {
-          font-size: 1rem;
-          bottom: 10%;
-          left: 5%;
-          padding: 8px 12px;
-        }
-
-        .slider .controls {
-          padding: 10px;
-        }
-
-        .slider .controls button {
-          font-size: 0.9rem;
-          padding: 8px 12px;
-        }
-
-        .movie-card {
-          width: 100%;
-        }
-
-        .tail {
-          grid-template-columns: 1fr;
-          padding: 15px;
-          font-size: 14px;
-        }
-
-        .tail a {
-          font-size: 14px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <img
-        src="Pictures/download (10).jpg"
-        alt="Movie Thumbnail"
-        class="center-image"
-      />
-      <div class="description">
-        <p><strong>Movie Title:</strong> The Enchanted Garden</p>
-        <p>
-          An inspiring tale of magic and discovery, where a young girl uncovers
-          a world of wonder hidden within an abandoned garden. A beautiful mix
-          of fantasy, heart, and resilience.
-        </p>
-      </div>
-      <div class="genre">
-        <a href="">Fantasy</a>
-        <a href="">Drama</a>
-        <a href="">Adventure</a>
-        <a href="">Mystery</a>
-      </div>
-      <br /><br /><br /><br />
-      <div class="navi">
-        <a href="">A</a>
-        <a href="">B</a>
-        <a href="">C</a>
-        <a href="">D</a>
-        <a href="">E</a>
-        <a href="">F</a>
-        <a href="">G</a>
-        <a href="">H</a>
-        <a href="">I</a>
-        <a href="">J</a>
-        <a href="">K</a>
-        <a href="">L</a>
-        <a href="">M</a>
-        <a href="">N</a>
-        <a href="">O</a>
-        <a href="">P</a>
-        <a href="">Q</a>
-        <a href="">R</a>
-        <a href="">S</a>
-        <a href="">U</a>
-        <a href="">V</a>
-        <a href="">W</a>
-        <a href="">X</a>
-        <a href="">Y</a>
-        <a href="">Z</a>
-      </div>
+    <header>
+      <div class="logo">Ani<span>Media</span></div>
+      <button class="toggle-theme" id="themeToggle">🌙 Dark Mode</button>
+    </header>
+
+    <div class="watch">
+      <main class="main-container">
+        <div class="card">
+          <img
+            src="Pictures/download (10).jpg"
+            alt="Movie Poster"
+            class="center-image"
+          />
+          <div class="description">
+            <strong>Movie Title: The Enchanted Garden</strong>
+            <p>
+              An inspiring tale of magic and discovery, where a young girl
+              uncovers a world of wonder hidden within an abandoned garden. A
+              beautiful mix of fantasy, heart, and resilience.
+            </p>
+          </div>
+        </div>
+
+        <div class="genre">
+          <a href="#">Fantasy</a>
+          <a href="#">Drama</a>
+          <a href="#">Adventure</a>
+          <a href="#">Mystery</a>
+        </div>
+
+        <div class="navi">
+          <a href="#">A</a><a href="#">B</a><a href="#">C</a><a href="#">D</a
+          ><a href="#">E</a> <a href="#">F</a><a href="#">G</a><a href="#">H</a
+          ><a href="#">I</a><a href="#">J</a> <a href="#">K</a><a href="#">L</a
+          ><a href="#">M</a><a href="#">N</a><a href="#">O</a> <a href="#">P</a
+          ><a href="#">Q</a><a href="#">R</a><a href="#">S</a><a href="#">U</a>
+          <a href="#">V</a><a href="#">W</a><a href="#">X</a><a href="#">Y</a
+          ><a href="#">Z</a>
+        </div>
+      </main>
     </div>
+
+    <footer>
+      <div class="end">Ani<span>Media</span></div>
+      <hr />
+      <div class="footer-links">
+        <p>All rights reserved</p>
+        <p>animedia@gmail.com</p>
+        <p>Terms and Conditions</p>
+        <p>&copy; 2025 AniMedia</p>
+      </div>
+    </footer>
+
+    <script>
+      const toggleBtn = document.getElementById("themeToggle");
+      const body = document.body;
+
+      // Load preference on page load
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        body.classList.add("dark");
+        toggleBtn.textContent = "☀️ Light Mode";
+      }
+
+      function toggleTheme() {
+        body.classList.toggle("dark");
+        const isDark = body.classList.contains("dark");
+        toggleBtn.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      }
+
+      toggleBtn.addEventListener("click", toggleTheme);
+    </script>
   </body>
 </html>
