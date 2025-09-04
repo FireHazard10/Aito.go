@@ -594,3 +594,130 @@ footer hr {
   }
 }
 
+           /* Floating Button */
+      .float-btn {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(8px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        cursor: grab;
+        color: whitesmoke;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        user-select: none;
+        z-index: 1000;
+        transition: background 0.3s;
+      }
+      .float-btn:active {
+        cursor: grabbing;
+      }
+
+      /* Radial Menu Items */
+      .menu-item {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        cursor: pointer;
+        opacity: 0;
+        transform: translate(0, 0);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 999;
+      }
+
+          .handy-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: #f472b6;
+      border: none;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+    .handy-btn:hover {
+      transform: scale(1.1) rotate(8deg);
+      background: #f472b6;
+      color: white;
+    }
+
+    /* Search popup */
+    .search-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+
+            
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            border-top: 2px solid #f472b6;
+    }
+
+    .search-popup .Exit{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      color: white;
+      background-color: rgb(235, 25, 25);
+      color: whitesmoke;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-size: 12px;
+      border-radius: 7%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .search-form{
+            position: absolute;
+            width: 50vw;
+            background: #fff8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            z-index: 999;
+            border-top: 2px solid #f472b6;
+    }
+
+    .search-form input {
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            width: 95%;
+          }
+          
+          .search-form button {
+            background-color: #f5c518;
+            border: none;
+            margin-left: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+          }
+
