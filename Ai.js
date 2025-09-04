@@ -39,7 +39,7 @@ updateSlider(currentIndex);
       }
     });*/
 
-const toggleLink = document.getElementById("searchToggle");
+/*const toggleLink = document.getElementById("searchToggle");
 const dropdown = document.getElementById("searchDropdown");
 const searchInput = document.getElementById("searchInput");
 const suggestionsList = document.getElementById("suggestionsList");
@@ -281,7 +281,7 @@ searchInput.addEventListener("input", function () {
       suggestionsList.appendChild(li);
     });
   }
-});
+});*/
 
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
@@ -393,6 +393,7 @@ function toggleMenu() {
         document.removeEventListener("mousemove", onMouseMove);
         document.removeEventListener("mouseup", onMouseUp);
       }
+
 
 
 
