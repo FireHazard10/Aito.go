@@ -25,7 +25,7 @@
           <a href="#">Genres</a>
         </nav>
 
-        <a href="#" class="cta">Join Now</a>
+        <a href="Aimiddle-page.html" class="cta">Join Now</a>
 
         <button class="hamburger" onclick="toggleMenu()">☰</button>
       </div>
@@ -307,6 +307,30 @@
       </div>     
       </div>
     </section>
+
+    <div class="float-btn" id="floatBtn">+</div>
+    <div class="menu-item"><button class="handy-btn" id="searchBtn"><i class="bx bx-search"></i></button></div>
+    <div class="menu-item"><button class="handy-btn" id="themeBtn"><i class="bx bx-moon"></i></button></div>
+    <div class="menu-item"><button class="handy-btn" id="watchlistBtn"><i class="bx bxs-star"></i></button></div>
+    <div class="menu-item"><button class="handy-btn" id="notifyBtn"><i class="bx bx-bell"></i></button></div>
+
+     <!-- Handy Menu -->
+  <div class="handy-menu">
+    <button class="handy-btn" id="randomBtn"><i class="bx bx-dice-5"></i></button>
+  </div>
+
+  <!-- Search Popup -->
+  <div class="search-popup" id="searchPopup">
+              <form class="search-form">
+                <input type="text" id="searchInput" placeholder="Search for anime, manga, or characters..." />
+                <button type="submit">Go</button>
+                <ul id="suggestionsList"></ul>
+              </form>
+
+      <button onclick="closeSearch()" class="Exit">x Close</button>
+    </div>
+  </div>
+    
     <br><section class="rec">
         <div class="boxli">
             <a href="">A</a>
@@ -416,3 +440,4 @@
 <script src="Ai.js"></script>
 <script src="clock.js"></script>
 </html>
+
