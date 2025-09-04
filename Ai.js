@@ -283,7 +283,7 @@ searchInput.addEventListener("input", function () {
   }
 });*/
 
-function toggleMenu() {
+function toggleMobileMenu() {
   const menu = document.getElementById("mobileMenu");
   menu.classList.toggle("active");
 }
@@ -339,11 +339,11 @@ function toggleMenu() {
       floatBtn.addEventListener("click", () => {
         if (!isDragging) {
           menuOpen = !menuOpen;
-          toggleMenu();
+          toggleFloatingMenu();
         }
       });
 
-      function toggleMenu() {
+      function toggleFloatingMenu() {
         const btnRect = floatBtn.getBoundingClientRect();
         const btnX = btnRect.left + btnRect.width / 2;
         const btnY = btnRect.top + btnRect.height / 2;
@@ -381,7 +381,7 @@ function toggleMenu() {
       function onMouseMove(e) {
         isDragging = true;
         menuOpen = false; // close when moving
-        toggleMenu();
+        toggleFloatingMenu();
         floatBtn.style.left = e.clientX - offsetX + "px";
         floatBtn.style.top = e.clientY - offsetY + "px";
         floatBtn.style.right = "";
@@ -393,6 +393,7 @@ function toggleMenu() {
         document.removeEventListener("mousemove", onMouseMove);
         document.removeEventListener("mouseup", onMouseUp);
       }
+
 
 
 
