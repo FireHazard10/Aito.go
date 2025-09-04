@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Movie Description</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Oxanium:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="pages.css" />
+    <style>
+      :root {
+        --background: linear-gradient(90deg, #f472b6, #fff8f0);
+        --text-color: #2c2c2c;
+        --card-bg: #ffffffd9;
+        --accent: #ff69b4;
+        --navi: #fff;
+        --tag-bg: transparent;
+        --tag-border: #f0f0f0;
+        --foot: #2c2c2c;
+        --end: #ccc;
+      }
+
+      body.dark {
+        --background: radial-gradient(circle at top, #0f0f0f, #1a1a1a);
+        --text-color: #e0f7fa;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --accent: #00e5ff;
+        --navi: #00e5ff;
+        --tag-bg: transparent;
+        --tag-border: #00e5ff;
+        --end: #00e5ff;
+        --foot: linear-gradient(circle at top, #1a1a1a, #0f0f0f);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        transition: background 0.5s, color 0.5s;
+      }
+
+      body {
+        font-family: "Oxanium", sans-serif;
+        background: var(--background);
+        color: var(--text-color);
+      }
+
+      .toggle-theme {
+        font-size: 1rem;
+        background: none;
+        border: 2px solid var(--accent);
+        padding: 0.4rem 0.8rem;
+        color: var(--accent);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .toggle-theme:hover {
+        background: var(--accent);
+        color: #111;
+      }
+
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        min-height: 100vh;
+      }
+
+      .card {
+        grid-area: card-0;
+        background: var(--card-bg);
+        border: 1px solid var(--tag-border);
+        border-radius: 20px;
+        padding: 2rem;
+        max-width: 900px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        transition: all 0.4s ease;
+      }
+
+      .center-image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 0 20px var(--accent);
+        transition: 0.3s;
+      }
+
+      .center-image:hover {
+        transform: scale(1.05) rotate(2deg);
+      }
+
+      .description {
+        flex: 1;
+        font-size: 1.1rem;
+      }
+
+      .description strong {
+        font-size: 1.4rem;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .genre {
+        grid-area: genre;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 2rem 0;
+      }
+
+      .genre a {
+        padding: 10px 20px;
+        border: 2px solid var(--tag-border);
+        border-radius: 30px;
+        color: var(--accent);
+        background: var(--tag-bg);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .genre a:hover {
+        background: var(--accent);
+        color: #111;
+        box-shadow: 0 0 10px var(--accent);
+      }
+
+      .navi {
+        grid-area: navi;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .navi a {
+        background: #111;
+        color: var(--navi);
+        padding: 8px 12px;
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .navi a:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: var(--foot);
+        color: var(--end);
+      }
+
+      footer .end {
+        font-size: 2rem;
+        color: var(--accent);
+      }
+
+      footer .end span {
+        color: white;
+      }
+
+      footer .footer-links {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      footer hr {
+        border: none;
+        border-top: 1px solid #555;
+        margin: 10px auto 20px;
+        width: 80%;
+      }
+      @media (max-width: 768px) {
+        .watch {
+          transform: translateY(40%);
+          position: relative;
+          display: grid;
+          grid-template-columns: 280px 1fr;
+          grid-template-areas:
+            "card-0"
+            "genre"
+            "navi";
+        }
+
+        .card {
+          grid-area: card-0;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .description {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="bg-image"></div>
+      <div class="container">
+        <div class="logo">Ani<span>Media</span></div>
+
+        <nav>
+          <a href="#">Home</a>
+          <a href="page-1.html">Series</a>
+          <a href="AiDesc02.html">Movies</a>
+          <a href="#">Genres</a>
+        </nav>
+
+        <button class="toggle-theme" id="themeToggle">🌙 Dark Mode</button>
+
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Home</a>
+        <a href="page-1.html">Series</a>
+        <a href="AiDesc1.html">Movies</a>
+        <a href="#">Genres</a>
+        <a href="#" class="cta" style="width: fit-content">Join Now</a>
+      </div>
+    </header>
+
+    <div class="watch">
+      <main class="main-container">
+        <div class="card">
+          <img
+            src="Pictures/download (10).jpg"
+            alt="Movie Poster"
+            class="center-image"
+          />
+          <div class="description">
+            <strong>Movie Title: The Enchanted Garden</strong>
+            <p>
+              An inspiring tale of magic and discovery, where a young girl
+              uncovers a world of wonder hidden within an abandoned garden. A
+              beautiful mix of fantasy, heart, and resilience.
+            </p>
+          </div>
+        </div>
+
+        <div class="genre">
+          <a href="#">Fantasy</a>
+          <a href="#">Drama</a>
+          <a href="#">Adventure</a>
+          <a href="#">Mystery</a>
+        </div>
+
+        <div class="navi">
+          <a href="#">A</a><a href="#">B</a><a href="#">C</a><a href="#">D</a
+          ><a href="#">E</a> <a href="#">F</a><a href="#">G</a><a href="#">H</a
+          ><a href="#">I</a><a href="#">J</a> <a href="#">K</a><a href="#">L</a
+          ><a href="#">M</a><a href="#">N</a><a href="#">O</a> <a href="#">P</a
+          ><a href="#">Q</a><a href="#">R</a><a href="#">S</a><a href="#">U</a>
+          <a href="#">V</a><a href="#">W</a><a href="#">X</a><a href="#">Y</a
+          ><a href="#">Z</a>
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      <div class="end">Ani<span>Media</span></div>
+      <hr />
+      <div class="footer-links">
+        <p>All rights reserved</p>
+        <p>animedia@gmail.com</p>
+        <p>Terms and Conditions</p>
+        <p>&copy; 2025 AniMedia</p>
+      </div>
+    </footer>
+
+    <script>
+      const toggleBtn = document.getElementById("themeToggle");
+      const body = document.body;
+
+      // Load preference on page load
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        body.classList.add("dark");
+        toggleBtn.textContent = "☀️ Light Mode";
+      }
+
+      function toggleTheme() {
+        body.classList.toggle("dark");
+        const isDark = body.classList.contains("dark");
+        toggleBtn.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      }
+
+      toggleBtn.addEventListener("click", toggleTheme);
+    </script>
+  </body>
+</html>
