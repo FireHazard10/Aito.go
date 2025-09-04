@@ -287,3 +287,112 @@ function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   menu.classList.toggle("active");
 }
+
+// Search popup
+    const searchPopup = document.getElementById("searchPopup");
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      searchPopup.style.display = "flex";
+    });
+    function closeSearch() {
+      searchPopup.style.display = "none";
+    }
+
+    // Theme toggle
+    const themeBtn = document.getElementById("themeBtn");
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const icon = themeBtn.querySelector("i");
+      if (document.body.classList.contains("dark")) {
+        icon.classList.replace("bx-moon", "bx-sun");
+      } else {
+        icon.classList.replace("bx-sun", "bx-moon");
+      }
+    });
+
+    // Watchlist (placeholder)
+    document.getElementById("watchlistBtn").addEventListener("click", () => {
+      alert("⭐ Your Watchlist feature will go here!");
+    });
+
+    // Random anime redirect (placeholder)
+    const randomAnimes = ["page-1.html",
+      "page-2.html",
+      "page-3.html",
+      ];
+    document.getElementById("randomBtn").addEventListener("click", () => {
+      const random = randomAnimes[Math.floor(Math.random() * randomAnimes.length)];
+      window.location.href = random;
+    });
+
+    // Notifications (placeholder)
+    document.getElementById("notifyBtn").addEventListener("click", () => {
+      alert("🔔 No new notifications right now!");
+    });
+
+      const floatBtn = document.getElementById("floatBtn");
+      const menuItems = document.querySelectorAll(".menu-item");
+
+      let isDragging = false;
+      let offsetX, offsetY;
+      let menuOpen = false;
+
+      floatBtn.addEventListener("click", () => {
+        if (!isDragging) {
+          menuOpen = !menuOpen;
+          toggleMenu();
+        }
+      });
+
+      function toggleMenu() {
+        const btnRect = floatBtn.getBoundingClientRect();
+        const btnX = btnRect.left + btnRect.width / 2;
+        const btnY = btnRect.top + btnRect.height / 2;
+
+        const arcDirection = btnX < window.innerWidth / 2 ? 1 : -1; // 1 = right arc, -1 = left arc
+        const radius = 70; // distance from button to items
+        const totalItems = menuItems.length;
+        const angleStep = Math.PI / (totalItems + 1); // spread items in semi-circle
+
+        menuItems.forEach((item, i) => {
+          if (menuOpen) {
+            const angle = angleStep * (i + 1) - Math.PI / 2;
+            const x = Math.cos(angle) * radius * arcDirection;
+            const y = Math.sin(angle) * radius;
+            item.style.left = btnX - 25 + x + "px";
+            item.style.top = btnY - 25 + y + "px";
+            item.style.opacity = "1";
+          } else {
+            item.style.left = btnX - 25 + "px";
+            item.style.top = btnY - 25 + "px";
+            item.style.opacity = "0";
+          }
+        });
+      }
+
+      // Drag logic
+      floatBtn.addEventListener("mousedown", (e) => {
+        isDragging = false;
+        offsetX = e.clientX - floatBtn.getBoundingClientRect().left;
+        offsetY = e.clientY - floatBtn.getBoundingClientRect().top;
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+      });
+
+      function onMouseMove(e) {
+        isDragging = true;
+        menuOpen = false; // close when moving
+        toggleMenu();
+        floatBtn.style.left = e.clientX - offsetX + "px";
+        floatBtn.style.top = e.clientY - offsetY + "px";
+        floatBtn.style.right = "";
+        floatBtn.style.bottom = "";
+        floatBtn.style.position = "fixed";
+      }
+
+      function onMouseUp() {
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+      }
+
+
+
