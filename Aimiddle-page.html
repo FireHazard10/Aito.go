@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AniMedia - Welcome</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Oxanium:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Boxicons CDN -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f472b6, #fff8f0);
+        font-family: "Oxanium", sans-serif;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        width: 300px;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      h1 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 2em;
+        margin-bottom: 30px;
+        color: #f472b6;
+      }
+
+      h1 span {
+        color: #fff8f0;
+      }
+
+      .link-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 12px 0;
+        padding: 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        color: #fff;
+        background: linear-gradient(135deg, #f472b6, #d94ea0);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .link-btn i {
+        margin-right: 8px;
+        font-size: 1.2em;
+      }
+      .link-btn:hover {
+        background: linear-gradient(135deg, #d94ea0, #f472b6);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      /* subtle animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Ani<span>Media</span></h1>
+      <a href="Aisign-up.html" class="link-btn"
+        ><i class="bx bx-user-plus"></i> Sign Up</a
+      >
+      <a href="Ailog-in.html" class="link-btn"
+        ><i class="bx bx-log-in"></i> Log In</a
+      >
+      <a href="Ailog-out.html" class="link-btn"
+        ><i class="bx bx-log-out"></i> Log Out</a
+      >
+      <a href="Ai-about-us.html" class="link-btn"
+        ><i class="bx bx-info-circle"></i> About Us</a
+      >
+    </div>
+  </body>
+</html>

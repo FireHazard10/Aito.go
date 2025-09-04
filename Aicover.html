@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animedia</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #fff8f0 50%, #f472b6 50%);
+        font-family: Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      header {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+
+      .logo span {
+        color: white;
+      }
+
+      header .logo {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #f472b6;
+      }
+      main {
+        max-width: 600px;
+        background: rgba(255, 255, 255, 0.62);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      main p {
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-weight: 500;
+        background: linear-gradient(90deg, #f472b6, #fff8f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      main h2 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        background: linear-gradient(180deg, #f472b6, #fff8f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .quest {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 35px; /* width for circle */
+        height: 35px; /* height for circle */
+        display: flex; /* center content inside */
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(125deg, #fff8f0, #d94ea0);
+        color: white;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .quest:hover {
+        transform: scale(1.05);
+      }
+      .explore-btn {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(180deg, #ff7ab6, #d94ea0);
+        color: white;
+        padding: 1.5rem 4.5rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+      }
+      .explore-btn:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Ani<span>Media</span></div>
+    </header>
+    <div class="quest"><p>?</p></div>
+    <main>
+      <h2>Welcome to Animedia</h2>
+      <p>
+        Dive into a colorful world of animation curated shorts,
+        behind-the-scenes features, and playful recommendations. Browse as a
+        guest or sign up to save favourites and make playlists. Whether you're
+        here for inspiration or to unwind, there's a frame waiting for you.
+      </p>
+      <p>
+        <strong>Tip:</strong> Tap the button in the corner to start exploring.
+      </p>
+    </main>
+    <button class="explore-btn" onclick="location.href='Ai.html'">
+      Explore
+    </button>
+  </body>
+</html>

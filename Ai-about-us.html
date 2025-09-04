@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AniMedia - About Us</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Oxanium:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f472b6, #fff8f0);
+        font-family: "Oxanium", sans-serif;
+        padding: 20px;
+      }
+
+      .about-container {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        padding: 40px 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        max-width: 700px;
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      h1 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 2.2em;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      h1 span {
+        color: #fff8f0;
+      }
+
+      p {
+        color: #444;
+        font-size: 1.05em;
+        line-height: 1.6;
+        margin-bottom: 25px;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      .section h2 {
+        font-size: 1.3em;
+        margin-bottom: 12px;
+        color: #d94ea0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .section h2 i {
+        font-size: 1.2em;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        color: #fff;
+        background: linear-gradient(135deg, #f472b6, #d94ea0);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .btn:hover {
+        background: linear-gradient(135deg, #d94ea0, #f472b6);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="about-container">
+      <h1>About Ani<span>Media</span></h1>
+      <p>
+        AniMedia is your go-to platform for anime and animated series lovers. We
+        aim to bring fans closer to the stories and characters they love,
+        offering a smooth, immersive, and user-friendly experience.
+      </p>
+
+      <div class="section">
+        <h2><i class="bx bx-bullseye"></i> Our Mission</h2>
+        <p>
+          To create a vibrant hub where anime enthusiasts can explore, discover,
+          and enjoy their favorite shows while connecting with a passionate
+          community. Our mission is to combine design, technology, and
+          storytelling in one place.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2><i class="bx bx-group"></i> Our Team</h2>
+        <p>
+          We are a team of creators, developers, and anime fans dedicated to
+          building a platform that truly understands the anime community.
+          Together, we strive to deliver innovation and fun.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2><i class="bx bx-envelope"></i> Contact Us</h2>
+        <p>
+          Got questions or suggestions? Reach out to us anytime at
+          <strong>support@animedia.com</strong>.
+        </p>
+      </div>
+
+      <a href="aidox.html" class="btn">Back to Home</a>
+    </div>
+  </body>
+</html>

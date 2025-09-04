@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AniMedia - Logged Out</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Oxanium:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Boxicons CDN -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f472b6, #fff8f0);
+        font-family: "Oxanium", sans-serif;
+      }
+
+      .logout-box {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        padding: 40px 30px;
+        border-radius: 20px;
+        text-align: center;
+        width: 320px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .logout-box i {
+        font-size: 4em;
+        color: #d94ea0;
+        margin-bottom: 20px;
+        animation: bounce 1.5s infinite;
+      }
+
+      h2 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      p {
+        font-size: 1em;
+        margin-bottom: 25px;
+        color: #444;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+        color: #fff;
+        background: linear-gradient(135deg, #f472b6, #d94ea0);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .btn:hover {
+        background: linear-gradient(135deg, #d94ea0, #f472b6);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logout-box">
+      <i class="bx bx-log-out-circle"></i>
+      <h2>You’ve Logged Out</h2>
+      <p>Thank you for visiting AniMedia. See you again soon!</p>
+      <a href="Ailog-in.html" class="btn">Log In Again</a>
+    </div>
+  </body>
+</html>

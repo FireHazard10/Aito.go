@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AniMedia - Sign Up</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Oxanium:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f472b6, #fff8f0);
+        font-family: "Oxanium", sans-serif;
+      }
+
+      /* floating logo */
+      .logo {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: #f472b6;
+        font-size: 1.8em;
+        font-weight: bold;
+        -webkit-text-stroke: 0.5px white;
+      }
+      .logo span {
+        color: #fff8f0;
+      }
+
+      /* floating help button */
+      .quest {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(125deg, #fff8f0, #d94ea0);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.25s ease;
+      }
+      .quest:hover {
+        transform: scale(1.1) rotate(10deg);
+      }
+
+      /* glass effect signup card */
+      .SignUp-container {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        padding: 40px 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        width: 320px;
+        text-align: center;
+        height: 520px;
+      }
+
+      h2 {
+        margin-bottom: 25px;
+        color: #333;
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.6em;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.9em;
+        color: #444;
+      }
+
+      input[type="email"],
+      input[type="password"],
+      input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+        outline: none;
+        transition: all 0.25s ease;
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus,
+      input[type="text"]:focus {
+        border-color: #f472b6;
+        box-shadow: 0 0 6px rgba(244, 114, 182, 0.6);
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        font-size: 0.9em;
+        margin-bottom: 20px;
+      }
+
+      .checkbox-group input {
+        margin-right: 8px;
+      }
+
+      .SignUp-button {
+        background: linear-gradient(135deg, #f472b6, #d94ea0);
+        color: #ffffff;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+      .SignUp-button:hover {
+        background: linear-gradient(135deg, #d94ea0, #f472b6);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Ani<span>Media</span></div>
+      <button class="quest">?</button>
+    </header>
+
+    <div class="SignUp-container">
+      <h2>Create Account</h2>
+      <form action="#" method="post">
+        <div class="input-group">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first-name" required />
+        </div>
+        <div class="input-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name" required />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="input-group checkbox-group">
+          <input type="checkbox" id="not-a-robot" name="not-a-robot" required />
+          <label for="not-a-robot">I'm not a robot</label>
+        </div>
+        <button type="submit" class="SignUp-button">Sign Up</button>
+      </form>
+    </div>
+  </body>
+</html>
