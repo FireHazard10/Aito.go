@@ -1,0 +1,31 @@
+<header>
+  <div class="bg-image"></div>
+  <div class="xeno">
+    <div class="logo">Ani<span>Media</span></div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="page-1.html">Series</a>
+      <a href="AiDesc02.html">Movies</a>
+      <a href="#">Genres</a>
+    </nav>
+
+    <a href="#" class="cta">Join Now</a>
+
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="page-1.html">Series</a>
+    <a href="AiDesc1.html">Movies</a>
+    <a href="#">Genres</a>
+    <a href="#" class="cta" style="width: fit-content">Join Now</a>
+  </div>
+</header>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("active");
+  }
+</script>

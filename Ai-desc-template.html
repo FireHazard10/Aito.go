@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="pages.css" />
+    <link rel="stylesheet" href="aidox.css" />
+    <link rel="stylesheet" href="Aidesc.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <main class="main-container">
+      <div class="card">
+        <img
+          src="Pictures/download (10).jpg"
+          alt="Movie Poster"
+          class="center-image"
+        />
+        <div class="description">
+          <strong>Movie Title: The Enchanted Garden</strong>
+          <p>
+            An inspiring tale of magic and discovery, where a young girl
+            uncovers a world of wonder hidden within an abandoned garden. A
+            beautiful mix of fantasy, heart, and resilience.
+          </p>
+        </div>
+      </div>
+
+      <div class="genre">
+        <a href="#">Fantasy</a>
+        <a href="#">Drama</a>
+        <a href="#">Adventure</a>
+        <a href="#">Mystery</a>
+      </div>
+    </main>
+
+    <br />
+    <div id="rec"></div>
+    <div id="footer"></div>
+  </body>
+  <script src="easypages.js"></script>
+  <script src="Aidesc-theme.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("active");
+    }
+    let currentPage = 1; // page-1.html is current
+    const totalPages = 5;
+    const pages = [
+      "page-1.html",
+      "page-2.html",
+      "page-3.html",
+      "page-4.html",
+      "page-5.html",
+    ];
+
+    const prevButton = document.getElementById("previousBtn");
+    const nextButton = document.getElementById("nexteraBtn");
+    const pageNumber = document.getElementById("pageNumber");
+
+    prevButton.addEventListener("click", function () {
+      if (currentPage > 1) {
+        currentPage--;
+        window.location.href = pages[currentPage - 1];
+      }
+    });
+
+    nextButton.addEventListener("click", function () {
+      if (currentPage < totalPages) {
+        currentPage++;
+        window.location.href = pages[currentPage - 1];
+      }
+    });
+
+    function checkButtons() {
+      prevButton.disabled = currentPage === 1;
+      nextButton.disabled = currentPage === totalPages;
+      pageNumber.textContent = currentPage;
+    }
+
+    checkButtons();
+  </script>
+</html>
