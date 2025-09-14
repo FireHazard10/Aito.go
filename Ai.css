@@ -159,8 +159,8 @@ nav a:hover {
   overflow: hidden;
   display: flex;
   align-items: center;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  /*border: 2px solid #ddd;
+  border-radius: 8px;*/
 }
 
 .slider img {
@@ -732,5 +732,6 @@ footer hr {
             cursor: pointer;
             border-radius: 4px;
           }
+
 
 
