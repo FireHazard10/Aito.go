@@ -9,75 +9,156 @@
       rel="stylesheet"
     />
     <style>
+      /* ---------- BASE ---------- */
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #f472b6, #fff8f0);
+        background: black;
         font-family: "Oxanium", sans-serif;
+        overflow: hidden;
+        color: #fff;
       }
 
-      /* floating logo */
-      .logo {
+      /* animated neon glow background */
+      body::before {
+        content: "";
         position: absolute;
-        top: 20px;
-        left: 20px;
-        color: #f472b6;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 180deg,
+          #ff8a65,
+          #ffc371,
+          #fff8f0,
+          #ff8a65
+        );
+        animation: rotate 12s linear infinite;
+        opacity: 0.4;
+        z-index: 0;
+      }
+
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ---------- HEADER ---------- */
+      header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .logo {
         font-size: 1.8em;
         font-weight: bold;
-        -webkit-text-stroke: 0.5px white;
+        background: linear-gradient(135deg, #ffc371, #ff8a65);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        cursor: pointer;
       }
       .logo span {
-        color: #fff8f0;
+        background: none !important; /* remove inherited background */
+        -webkit-background-clip: unset !important;
+        -webkit-text-fill-color: #fff !important; /* force solid white text */
+        color: #fff !important; /* fallback for non-webkit */
       }
 
-      /* floating help button */
       .quest {
-        position: absolute;
-        top: 20px;
-        right: 20px;
         width: 40px;
         height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        background: linear-gradient(125deg, #fff8f0, #d94ea0);
-        color: white;
+        background: linear-gradient(135deg, #ffc371, #ff8a65);
+        color: #fff;
+        border: none;
         font-weight: bold;
         cursor: pointer;
-        border: none;
         font-size: 1rem;
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         transition: all 0.25s ease;
       }
       .quest:hover {
-        transform: scale(1.1) rotate(10deg);
+        transform: scale(1.15) rotate(12deg);
+        box-shadow: 0 0 20px #ffc371;
       }
 
-      /* glass effect signup card */
+      /* ---------- SIGNUP CARD ---------- */
       .SignUp-container {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(12px);
-        padding: 40px 30px;
+        position: relative;
+        z-index: 1;
+        width: 340px;
+        height: 520px; /* fixed height */
         border-radius: 20px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-        width: 320px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+          inset 0 0 20px rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
         text-align: center;
-        height: 520px;
+        animation: fadeIn 1s ease forwards;
+        overflow: hidden; /* contain internal scroll */
+        display: flex;
+        flex-direction: column;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .SignUp-scroll {
+        overflow-y: auto;
+        padding: 45px 35px 40px;
+        flex: 1;
+      }
+
+      /* hide scrollbar (cross-browser) */
+      .SignUp-scroll::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+      .SignUp-scroll {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
 
       h2 {
-        margin-bottom: 25px;
-        color: #333;
+        color: #fff8f0;
         font-family: "Orbitron", sans-serif;
-        font-size: 1.6em;
+        font-size: 1.7em;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+        text-shadow: 0 0 10px rgba(244, 114, 182, 0.6);
       }
 
+      /* ---------- INPUTS ---------- */
       .input-group {
-        margin-bottom: 20px;
+        margin-bottom: 18px;
         text-align: left;
       }
 
@@ -85,7 +166,7 @@
         display: block;
         margin-bottom: 6px;
         font-size: 0.9em;
-        color: #444;
+        color: #ccc;
       }
 
       input[type="email"],
@@ -93,47 +174,71 @@
       input[type="text"] {
         width: 100%;
         padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        box-sizing: border-box;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
         outline: none;
-        transition: all 0.25s ease;
+        transition: 0.3s;
       }
 
       input[type="email"]:focus,
       input[type="password"]:focus,
       input[type="text"]:focus {
         border-color: #f472b6;
-        box-shadow: 0 0 6px rgba(244, 114, 182, 0.6);
+        box-shadow: 0 0 10px rgba(244, 114, 182, 0.6);
+        background: rgba(0, 0, 0, 0.6);
       }
 
+      /* ---------- CHECKBOX ---------- */
       .checkbox-group {
         display: flex;
         align-items: center;
         font-size: 0.9em;
-        margin-bottom: 20px;
+        color: #ddd;
+        margin-top: 10px;
+        margin-bottom: 25px;
       }
 
       .checkbox-group input {
         margin-right: 8px;
+        accent-color: #ff8a65;
       }
 
+      /* ---------- BUTTON ---------- */
       .SignUp-button {
-        background: linear-gradient(135deg, #f472b6, #d94ea0);
-        color: #ffffff;
+        background: linear-gradient(135deg, #ffc371, #ff8a65);
+        color: #fff;
         padding: 12px;
         border: none;
         border-radius: 10px;
-        font-size: 1em;
+        font-size: 1.05em;
         font-weight: bold;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: 0.3s ease;
         width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
+
       .SignUp-button:hover {
-        background: linear-gradient(135deg, #d94ea0, #f472b6);
+        background: white;
+        color: #ff8a65;
+        box-shadow: 0 0 15px rgba(244, 114, 182, 0.7);
         transform: translateY(-2px);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      }
+
+      /* ---------- RESPONSIVE ---------- */
+      @media (max-height: 600px) {
+        .SignUp-container {
+          height: 440px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .SignUp-container {
+          width: 90%;
+        }
       }
     </style>
   </head>
@@ -144,30 +249,46 @@
     </header>
 
     <div class="SignUp-container">
-      <h2>Create Account</h2>
-      <form action="#" method="post">
-        <div class="input-group">
-          <label for="first-name">First Name</label>
-          <input type="text" id="first-name" name="first-name" required />
-        </div>
-        <div class="input-group">
-          <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" name="last-name" required />
-        </div>
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-        <div class="input-group checkbox-group">
-          <input type="checkbox" id="not-a-robot" name="not-a-robot" required />
-          <label for="not-a-robot">I'm not a robot</label>
-        </div>
-        <button type="submit" class="SignUp-button">Sign Up</button>
-      </form>
+      <div class="SignUp-scroll">
+        <h2>Create Account</h2>
+        <form action="#" method="post">
+          <div class="input-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" required />
+          </div>
+          <div class="input-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" required />
+          </div>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <div class="input-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              required
+            />
+          </div>
+          <div class="checkbox-group">
+            <input
+              type="checkbox"
+              id="not-a-robot"
+              name="not-a-robot"
+              required
+            />
+            <label for="not-a-robot">I'm not a robot</label>
+          </div>
+          <button type="submit" class="SignUp-button">Sign Up</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
