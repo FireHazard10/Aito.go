@@ -3,96 +3,164 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Animedia</title>
+    <title>AniMedia</title>
     <style>
-      body {
+      /* ---------- Global Reset ---------- */
+      * {
         margin: 0;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #fff8f0 50%, #f472b6 50%);
-        font-family: Arial, sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+        padding: 0;
+        box-sizing: border-box;
       }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", "Segoe UI", sans-serif;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+
+        /* --- Layered background: soft blend + image --- */
+        background: radial-gradient(
+            circle at top left,
+            rgba(255, 138, 101, 0.35) 0%,
+            rgba(255, 138, 101, 0.15) 35%,
+            rgba(255, 138, 101, 0) 75%
+          ),
+          linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(30, 30, 30, 0.8)),
+          url("Pictures01/img9.jpg") center/cover no-repeat;
+        background-blend-mode: soft-light, normal;
+      }
+
+      /* ---------- Header ---------- */
       header {
         position: absolute;
-        top: 20px;
-        left: 20px;
+        top: 25px;
+        left: 35px;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #ff8a65;
       }
 
       .logo span {
-        color: white;
+        color: #fff;
       }
 
-      header .logo {
-        margin: 0;
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #f472b6;
-      }
-      main {
-        max-width: 600px;
-        background: rgba(255, 255, 255, 0.62);
-        border: 1px solid rgba(0, 0, 0, 0.06);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      main p {
-        font-family: "M PLUS Rounded 1c", sans-serif;
-        font-weight: 500;
-        background: linear-gradient(90deg, #f472b6, #fff8f0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      main h2 {
-        margin-top: 0;
-        font-size: 1.5rem;
-        background: linear-gradient(180deg, #f472b6, #fff8f0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+      /* ---------- Question Button ---------- */
       .quest {
         position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 35px; /* width for circle */
-        height: 35px; /* height for circle */
-        display: flex; /* center content inside */
+        top: 25px;
+        right: 35px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff8a65, #ffc371);
+        color: white;
+        font-weight: bold;
+        display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        background: linear-gradient(125deg, #fff8f0, #d94ea0);
-        color: white;
+        font-size: 1.1rem;
         cursor: pointer;
-        border: none;
-        font-size: 1rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease-in-out;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
 
       .quest:hover {
-        transform: scale(1.05);
+        transform: scale(1.1);
+        box-shadow: 0 6px 18px rgba(255, 138, 101, 0.5);
       }
+
+      /* ---------- Main Content ---------- */
+      main {
+        max-width: 680px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 24px;
+        padding: 2.5rem 3rem;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 1.2s ease;
+      }
+
+      main h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+        background: linear-gradient(90deg, #ff8a65, #fff8f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      main p {
+        line-height: 1.7;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 1.2rem;
+      }
+
+      main strong {
+        color: #ffb79a;
+      }
+
+      /* ---------- Explore Button ---------- */
       .explore-btn {
         position: absolute;
         bottom: 20px;
         right: 20px;
-        background: linear-gradient(180deg, #ff7ab6, #d94ea0);
-        color: white;
-        padding: 1.5rem 4.5rem;
+        margin-top: 1.5rem;
+        background: linear-gradient(135deg, #ff8a65, #ffc371);
+        color: #fff;
+        padding: 1rem 3.5rem;
         border: none;
-        border-radius: 10px;
-        font-size: 1rem;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: transform 0.2s ease-in-out;
+        box-shadow: 0 6px 20px rgba(255, 138, 101, 0.3);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
+
       .explore-btn:hover {
-        transform: scale(1.05);
+        transform: scale(1.07);
+        box-shadow: 0 8px 26px rgba(255, 138, 101, 0.45);
+      }
+
+      /* ---------- Animation ---------- */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 600px) {
+        main {
+          padding: 1.8rem;
+        }
+
+        main h2 {
+          font-size: 1.6rem;
+        }
+
+        .explore-btn {
+          padding: 0.9rem 2.8rem;
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
@@ -100,22 +168,20 @@
     <header>
       <div class="logo">Ani<span>Media</span></div>
     </header>
-    <div class="quest"><p>?</p></div>
+
+    <div class="quest">?</div>
+
     <main>
-      <h2>Welcome to Animedia</h2>
+      <h2>Welcome to AniMedia</h2>
       <p>
         Dive into a colorful world of animation curated shorts,
         behind-the-scenes features, and playful recommendations. Browse as a
-        guest or sign up to save favourites and make playlists. Whether you're
-        here for inspiration or to unwind, there's a frame waiting for you.
+        guest or sign up to save favourites and create playlists.
       </p>
-      <p>
-        <strong>Tip:</strong> Tap the button in the corner to start exploring.
-      </p>
+      <p><strong>Tip:</strong> Tap the button below to start exploring!</p>
     </main>
-    <button class="explore-btn" onclick="location.href='Home.html'">
+    <button class="explore-btn" onclick="location.href='aidox.html'">
       Explore
     </button>
   </body>
 </html>
-
