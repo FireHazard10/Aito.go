@@ -373,10 +373,15 @@
 </body>
 <script src="easypages.js"></script>
 <script>
-  function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
+  const menu = document.getElementById("mobileMenu");
     menu.classList.toggle("active");
   }
+
+  
+      document.querySelectorAll(".badge").forEach((b) => {
+        b.addEventListener("click", () => b.classList.toggle("actixe"));
+      }); 
+    
   let currentPage = 5; // page-1.html is current
     const totalPages = 8;
     const pages = [
@@ -416,4 +421,5 @@
 
     checkButtons();
 </script>
+
 </html>
