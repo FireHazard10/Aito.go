@@ -27,10 +27,7 @@ body {
 main {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  flex: 7;
   padding: 40px;
 }
 
@@ -196,6 +193,15 @@ nav a:hover::after {
 
   .mobile-menu.active {
     display: flex;
+  }
+
+  .grid {
+    grid-template-rows: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  main {
+    flex: 7;
+    padding: 7px;
   }
 }
 
@@ -413,9 +419,6 @@ h2 {
 }
 
 @media (max-width: 600px) {
-  .poster img {
-    height: 180px;
-  }
   h1 {
     font-size: 1.5rem;
   }
@@ -600,11 +603,11 @@ footer hr {
   }
 }
 
+/* ---------- Anime Grid ---------- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
   max-width: 1200px;
 }
 
@@ -612,13 +615,15 @@ footer hr {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(16, 24, 40, 0.12);
-  background: white;
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(16, 24, 40, 0.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(16, 24, 40, 0.16);
+  box-shadow: 0 6px 24px rgba(255, 138, 101, 0.4);
 }
 
 .poster {
@@ -641,16 +646,12 @@ footer hr {
 .info {
   padding: 14px;
   border-top: 1px solid rgba(16, 24, 40, 0.05);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(250, 250, 250, 0.98)
-  );
+  background: rgba(255, 255, 255, 0.08);
 }
 .title {
   font-weight: 600;
   font-size: 15px;
-  color: #0b1220;
+  color: #fff8f0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -681,7 +682,7 @@ footer hr {
   user-select: none;
 }
 .badge.active {
-  background: linear-gradient(180deg, var(--accent), #7c3aed);
+  background: linear-gradient(135deg, #ff8a65, #ffc371);
   color: white;
   border-color: transparent;
 }
