@@ -392,9 +392,14 @@
 </body>
 <script>
     function toggleMenu() {
-  const menu = document.getElementById("mobileMenu");
-  menu.classList.toggle("active");
-}
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("active");
+  }
+
+  document.querySelectorAll(".badge").forEach((b) => {
+    b.addEventListener("click", () => b.classList.toggle("actixe"));
+  });
+    
 let currentPage = 1; // page-1.html is current
     const totalPages = 5;
     const pages = [
@@ -403,6 +408,9 @@ let currentPage = 1; // page-1.html is current
       "page-3.html",
       "page-4.html",
       "page-5.html",
+      "page-6.html",
+      "page-7.html",
+      "page-8.html",
     ];
 
     const prevButton = document.getElementById("previousBtn");
@@ -438,3 +446,4 @@ let currentPage = 1; // page-1.html is current
 
 </script>
 </html>
+
