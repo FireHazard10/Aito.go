@@ -251,21 +251,48 @@ themeBtn.addEventListener("click", () => {
 });
 
 // Watchlist (placeholder)
-document.getElementById("watchlistBtn").addEventListener("click", () => {
-  alert("⭐ Your Watchlist feature will go here!");
+//document.getElementById("watchlistBtn").addEventListener("click", () => {
+//alert("⭐ Your Watchlist feature will go here!");
+//});
+const watchlistBtn = document.getElementById("watchlistBtn");
+const popupOverlay = document.getElementById("popupOverlay");
+const closePopup = document.getElementById("closePopup");
+
+watchlistBtn.addEventListener("click", () => {
+  popupOverlay.style.display = "flex";
+});
+
+closePopup.addEventListener("click", () => {
+  popupOverlay.style.display = "none";
+});
+
+// Optional: close when clicking outside popup
+popupOverlay.addEventListener("click", (e) => {
+  if (e.target === popupOverlay) {
+    popupOverlay.style.display = "none";
+  }
 });
 
 // Random anime redirect (placeholder)
-const randomAnimes = ["page-1.html", "page-2.html", "page-3.html"];
+const randomAnimes = [
+  "page-1.html",
+  "page-2.html",
+  "page-3.html",
+  "page-4.html",
+  "page-5.html",
+  "page-6.html",
+  "page-7.html",
+  "page-8.html",
+];
 document.getElementById("randomBtn").addEventListener("click", () => {
   const random = randomAnimes[Math.floor(Math.random() * randomAnimes.length)];
   window.location.href = random;
 });
 
 // Notifications (placeholder)
-document.getElementById("notifyBtn").addEventListener("click", () => {
-  alert("🔔 No new notifications right now!");
-});
+//document.getElementById("notifyBtn").addEventListener("click", () => {
+//alert("🔔 No new notifications right now!");
+//});
 
 const floatBtn = document.getElementById("floatBtn");
 const menuItems = document.querySelectorAll(".menu-item");
