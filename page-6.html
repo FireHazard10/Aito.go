@@ -18,7 +18,7 @@
     <div id="header"></div>
 
     <main>
- <section class="grid">
+         <section class="grid">
       <article class="card">
         <div class="poster">
           <img alt="poster" src="Ai/13.jpg" />
@@ -382,16 +382,12 @@
     <div id="footer"></div>
 </body>
 <script src="easypages.js"></script>
+<script src="Ai.js"></script>
 <script>
-   const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("active");
-  }
-
-  
-      document.querySelectorAll(".badge").forEach((b) => {
-        b.addEventListener("click", () => b.classList.toggle("actixe"));
-      });
-    
+  //function toggleMenu() {
+    //const menu = document.getElementById("mobileMenu");
+    //menu.classList.toggle("actixe");
+  //}
   let currentPage = 6; // page-1.html is current
     const totalPages = 8;
     const pages = [
@@ -431,6 +427,4 @@
 
     checkButtons();
 </script>
-
 </html>
-
