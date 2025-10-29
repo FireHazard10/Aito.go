@@ -18,7 +18,7 @@
     <div id="header"></div>
 
     <main>
- <section class="grid">
+            <section class="grid">
 
 
       <article class="card">
@@ -373,15 +373,15 @@
 </body>
 <script src="easypages.js"></script>
 <script>
-  const menu = document.getElementById("mobileMenu");
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
     menu.classList.toggle("active");
   }
 
-  
-      document.querySelectorAll(".badge").forEach((b) => {
-        b.addEventListener("click", () => b.classList.toggle("actixe"));
-      }); 
-    
+  document.querySelectorAll(".badge").forEach((b) => {
+    b.addEventListener("click", () => b.classList.toggle("actixe"));
+  });
+
   let currentPage = 5; // page-1.html is current
     const totalPages = 8;
     const pages = [
@@ -421,6 +421,4 @@
 
     checkButtons();
 </script>
-
 </html>
-
