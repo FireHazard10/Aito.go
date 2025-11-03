@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Description Page</title>
+    <link rel="stylesheet" href="A1-explore.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <main class="movie-page">
+      <!-- SECTION 1: Movie Image + Title -->
+      <section class="movie-xero">
+        <img src="pictures/01 (5).jpg" alt="Movie Poster" class="xero-img" />
+        <div class="xero-overlay">
+          <h1>Movie Title</h1>
+        </div>
+      </section>
+
+      <!-- SECTION 2: Description -->
+      <section class="movie-description">
+        <div class="content">
+          <div class="poster">
+            <img src="pictures/01 (5).jpg" alt="Movie Poster" />
+          </div>
+
+          <div class="description">
+            <h2>Movie Description</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              accumsan, justo at ultricies dictum, libero nulla pretium odio, at
+              sollicitudin risus justo vel sem.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: Blur Matte Overlay -->
+      <section class="movie-extra">
+        <div class="cards">
+          <div class="card">
+            <img src="pictures/01 (3).jpg" alt="Trailer Thumbnail" />
+            <div class="overlay">
+              <h3>Trailer</h3>
+              <button>Watch</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="pictures/01 (4).jpg" alt="Season 1 Thumbnail" />
+            <div class="overlay">
+              <h3>Season 1</h3>
+              <button>Watch</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="pictures/01 (2).jfif" alt="Season 2 Thumbnail" />
+            <div class="overlay">
+              <h3>Season 2</h3>
+              <button>Watch</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="pictures/01 (1).jpg" alt="Season 3 Thumbnail" />
+            <div class="overlay">
+              <h3>Season 3</h3>
+              <button>Watch</button>
+            </div>
+          </div>
+          <br /><br /><button class="watch-btn">▶ Watch Now</button>
+        </div>
+      </section>
+    </main>
+    <div id="footer"></div>
+  </body>
+  <script src="easypages.js"></script>
+  <script src="Ai.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("active");
+    }
+  </script>
+</html>
