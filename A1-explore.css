@@ -391,6 +391,12 @@ main.movie-page {
   transform: scale(1.1);
 }
 
+.watch-btn a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   .hero-overlay h1 {
@@ -457,3 +463,4 @@ footer hr {
     align-items: center;
   }
 }
+
