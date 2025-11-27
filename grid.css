@@ -612,11 +612,12 @@ footer hr {
 }
 
 .card {
-  border-radius: var(--radius);
+  /*border-radius: var(--radius);*/
+  border-bottom: 3px #ff8a65 solid;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(16, 24, 40, 0.12);
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(16, 24, 40, 0.04);
+  /*border: 1px solid rgba(16, 24, 40, 0.04);*/
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
