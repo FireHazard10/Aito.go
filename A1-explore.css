@@ -303,9 +303,10 @@ main.movie-page {
 /* ---------- Section 3: Matte Blur Overlay ---------- */
 .movie-extra {
   position: relative;
+  border-bottom: 3px #ff8a65 solid;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border-radius: 15px;
+  /*border-radius: 15px;*/
   margin: 0 5%;
   padding: 2rem;
 }
@@ -377,10 +378,10 @@ main.movie-page {
   padding: 0.8rem 1.8rem;
   background: linear-gradient(90deg, #ff8a65, #ffc371);
   border: none;
-  border-bottom-left-radius: 7px;
+  /*border-bottom-left-radius: 7px;
   border-top-left-radius: 7px;
   border-bottom-right-radius: 15px;
-  border-top-right-radius: 0px;
+  border-top-right-radius: 0px;*/
   color: #000;
   font-weight: 600;
   cursor: pointer;
@@ -463,4 +464,3 @@ footer hr {
     align-items: center;
   }
 }
-
