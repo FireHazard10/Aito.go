@@ -11,11 +11,11 @@
    <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="pages.css">
-   <link rel="stylesheet" href="grid.css">
 
 </head>
 <body>
     <div id="header"></div>
+    <div id="followlong"></div>
 <main>
      <section class="grid">
       <article class="card">
@@ -391,17 +391,8 @@
     <div id="footer"></div>
 </body>
 <script src="easypages.js"></script>
-
+<script src="Ai.js"></script>
 <script>
-    function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("active");
-  }
-
-  document.querySelectorAll(".badge").forEach((b) => {
-    b.addEventListener("click", () => b.classList.toggle("actixe"));
-  });
-    
   let currentPage = 7; // page-1.html is current
     const totalPages = 8;
     const pages = [
@@ -442,4 +433,3 @@
     checkButtons();
 </script>
 </html>
-
