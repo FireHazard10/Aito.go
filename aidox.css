@@ -41,7 +41,7 @@ header {
 }
 
 .xeno {
-  max-width: 1200px;
+  /* max-width: 1200px;*/
   margin: 0 auto;
   padding: 1.5rem;
   display: flex;
@@ -177,7 +177,7 @@ nav a:hover::after {
 .bg-image {
   position: absolute;
   inset: 0;
-  background-image: url(❤️X/anime-girl-kazari.jpg);
+  background-image: url(❤️X/anime-girl-kazari-genshin-impact-spring-mask-5k-3840x2160-7950.jpg);
   background-size: cover;
   background-position: center;
   opacity: 0.5;
@@ -741,5 +741,3 @@ footer hr {
     align-items: center;
   }
 }
-
-
