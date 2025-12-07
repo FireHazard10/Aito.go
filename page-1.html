@@ -11,31 +11,9 @@
 
 </head>
 <body>
-       <header>
-      <div class="bg-image"></div>
-      <div class="container">
-        <div class="logo">Ani<span>Media</span></div>
+      <div id="header"></div>
 
-        <nav>
-          <a href="aidox.html">Home</a>
-          <a href="page-1.html">Series</a>
-          <a href="A1-explore.html">Movies</a>
-          <a href="ai-category01.html">Genres</a>
-        </nav>
-
-        <a href="#" class="cta">Join Now</a>
-
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
-      </div>
-
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="aidox.html">Home</a>
-        <a href="page-1.html">Series</a>
-        <a href="A1-explore.html">Movies</a>
-        <a href="ai-category01.html">Genres</a>
-        <a href="#" class="cta" style="width: fit-content">Join Now</a>
-      </div>
-      </header>
+      <div id="followlong"></div>
 <main>
     <section class="grid">
       <article class="card">
@@ -390,16 +368,12 @@
     </footer>
     
 </body>
+<script src="easypages.js"></script>
 <script>
     function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("active");
-  }
-
-  document.querySelectorAll(".badge").forEach((b) => {
-    b.addEventListener("click", () => b.classList.toggle("actixe"));
-  });
-    
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("active");
+}
 let currentPage = 1; // page-1.html is current
     const totalPages = 5;
     const pages = [
@@ -408,9 +382,6 @@ let currentPage = 1; // page-1.html is current
       "page-3.html",
       "page-4.html",
       "page-5.html",
-      "page-6.html",
-      "page-7.html",
-      "page-8.html",
     ];
 
     const prevButton = document.getElementById("previousBtn");
@@ -441,12 +412,8 @@ let currentPage = 1; // page-1.html is current
 
 
       document.querySelectorAll(".badge").forEach((b) => {
-        b.addEventListener("click", () => b.classList.toggle("active"));
+        b.addEventListener("click", () => b.classList.toggle("actixe"));
       });
 
 </script>
 </html>
-
-
-
-
