@@ -11,34 +11,10 @@
 
 </head>
 <body>
-       <header>
-      <div class="bg-image"></div>
-      <div class="container">
-        <div class="logo">Ani<span>Media</span></div>
-
-        <nav>
-          <a href="aidox.html">Home</a>
-          <a href="page-1.html">Series</a>
-          <a href="A1-explore.html">Movies</a>
-          <a href="ai-category01.html">Genres</a>
-        </nav>
-
-        <a href="#" class="cta">Join Now</a>
-
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
-      </div>
-
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="aidox.html">Home</a>
-        <a href="page-1.html">Series</a>
-        <a href="A1-explore.html">Movies</a>
-        <a href="ai-category01.html">Genres</a>
-        <a href="#" class="cta" style="width: fit-content">Join Now</a>
-      </div>
-      </header>
-       
+       <div id="header"></div>
+       <div id="followlong"></div>
 <main>
-         <section class="grid">
+      <section class="grid">
       <article class="card">
         <div class="poster">
           <img src="Pictures/2077609.jpg" alt="poster" />
@@ -367,27 +343,26 @@
 
     
 </body>
+<script src="easypages.js"></script>
 <script>
     function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("active");
-  }
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("active");
+}
 
-  
+
       document.querySelectorAll(".badge").forEach((b) => {
         b.addEventListener("click", () => b.classList.toggle("actixe"));
       });
+      
 let currentPage = 2; // page-1.html is current
-    const totalPages = 8;
+    const totalPages = 5;
     const pages = [
       "page-1.html",
       "page-2.html",
       "page-3.html",
       "page-4.html",
       "page-5.html",
-      "page-6.html",
-      "page-7.html",
-      "page-8.html",
     ];
 
     const prevButton = document.getElementById("previousBtn");
@@ -418,7 +393,3 @@ let currentPage = 2; // page-1.html is current
 
 </script>
 </html>
-
-
-
-
