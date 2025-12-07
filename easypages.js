@@ -13,6 +13,27 @@ function includeHTML() {
       document.getElementById("rec").innerHTML = data;
     });
 
+  // Load follow
+  fetch("easyfollow.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("follow").innerHTML = data;
+    });
+
+  // Load follow-long
+  fetch("easyfollowlong.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("followlong").innerHTML = data;
+    });
+
+  // Load genre
+  fetch("easygenre.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("genre").innerHTML = data;
+    });
+
   //Load Ai-Assist
   fetch("Ai-assist-template.html")
     .then((res) => res.text())
