@@ -1,34 +1,47 @@
-/* Main section */
+/* ---------------------------------------------
+   TRENDING SECTION (Desktop)
+---------------------------------------------- */
 .trending {
-  background: #242424;
+  background: url(Pictures04/background-bamboo-surface-mat.jpg) no-repeat;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #fff;
   padding: 40px 30px;
   position: relative;
   overflow: hidden;
 }
 
-/* Title */
-.trending .section-header h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: none !important; /* remove inherited background */
-  -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: #fff !important; /* force solid white text */
-  color: #fff !important; /* fallback for non-webkit */
-  border-left: 4px solid #ff8a65;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
+/* ---------------------------------------------
+   HEADER (Trending + Follow)
+---------------------------------------------- */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-/* Slider container */
+.section-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-left: 4px solid #ff8a65;
+  padding-left: 12px;
+  margin: 0;
+}
+
+/* ---------------------------------------------
+   SLIDER WRAPPER
+---------------------------------------------- */
 .trending-slider {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-/* Scroll area */
+/* Scrollable row */
 .trending-list {
   display: flex;
   gap: 20px;
@@ -41,7 +54,9 @@
   display: none;
 }
 
-/* Each anime poster */
+/* ---------------------------------------------
+   TREND ITEM (Poster Cards)
+---------------------------------------------- */
 .trend-item {
   flex: 0 0 auto;
   width: 220px;
@@ -61,7 +76,7 @@
   transform: scale(1.05);
 }
 
-/* Anime title (rotated) */
+/* Rotated Title */
 .trend-item h3 {
   position: absolute;
   bottom: 0;
@@ -73,11 +88,11 @@
   font-size: 0.95rem;
   color: #fff;
   white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Number tag */
+/* Number Tag */
 .trend-item p {
   position: absolute;
   bottom: -35px;
@@ -87,7 +102,9 @@
   font-size: 1.1rem;
 }
 
-/* Nav Buttons */
+/* ---------------------------------------------
+   SLIDER NAV BUTTONS
+---------------------------------------------- */
 .nav-btn {
   position: absolute;
   top: 50%;
@@ -115,14 +132,46 @@
   right: 5px;
 }
 
-/* Responsive */
+/* ---------------------------------------------
+   MOBILE (≤768px)
+   Change layout ONLY on mobile
+---------------------------------------------- */
 @media (max-width: 768px) {
+  /* stack Trending + Follow vertically */
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  /* Title stays at top */
+  .section-header h2 {
+    order: 1;
+    margin-bottom: 5px;
+  }
+
+  /* Slider stays in the middle */
+  .trending-slider {
+    order: 2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Follow button moves to bottom */
+  #follow {
+    order: 3;
+    margin-top: 10px;
+  }
+
+  /* Smaller poster sizes */
   .trend-item {
     width: 160px;
   }
+
   .trend-item img {
     height: 220px;
   }
+
   .trend-item h3 {
     left: -30px;
     width: 220px;
