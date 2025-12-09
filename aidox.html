@@ -804,8 +804,11 @@
     <div class="menu-item"><button class="handy-btn" id="watchlistBtn"><i class="bx bxs-star"></i></button></div>
 
     <div class="menu-item"><button class="handy-btn" id="randomBtn"><i class="bx bx-dice-5"></i></button></div>
-    <div class="menu-item"><button class="handy-btn" id="cursorBtn" title="Toggle Custom Cursor"><i class="bx bx-mouse"></i></button></div>
-
+    <div class="menu-item">
+      <button class="handy-btn" id="play" title="Toggle Music">
+       <i class="bx bx-music"></i>
+      </button>
+    </div>
 
      <!-- Handy Menu -->
   <div class="handy-menu">
@@ -832,9 +835,153 @@
       </div>
     </div>
 
-    <!-- Custom Cursor Elements -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
+    <!-- Music Popup -->
+<div class="music-pop" id="musicPopOverlay">
+  <button class="music-close-btn" id="closeMusic">✖</button>
+
+  <!-- The music file will load here -->
+  <!-- Player root (themes applied here by JS) -->
+  <div id="player-root" class="corex theme-orange">
+    <!-- Poster area (shows image; video element will be inserted here dynamically) -->
+    <div class="postex" id="postex">
+      <img
+        id="postex-img"
+        src="Pictures01/06d44be9-fab1-4954-b4db-e7204a22bc86.jpeg"
+        alt="postex image"
+      />
+      <!-- Video element goes here when active (created by JS) -->
+    </div>
+
+    <div class="infx">
+      <div class="top-row">
+        <div
+          style="display: flex; flex-direction: column; flex: 1; min-width: 0"
+        >
+          <div class="song-title" id="song-title">Loading...</div>
+          <div class="meta" id="song-meta">—</div>
+        </div>
+
+        <div class="settings">
+          <button class="icon-btn" id="settings-btn" title="Settings">
+            <i class="fas fa-gear"></i>
+          </button>
+          <div class="settings-panel" id="settings-panel" aria-hidden="true">
+            <div class="settings-row">
+              <span>Playback rate</span>
+              <select id="playbackRate">
+                <option value="0.5">0.5x</option>
+                <option value="0.75">0.75x</option>
+                <option value="1" selected>1x</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2x</option>
+              </select>
+            </div>
+
+            <div class="settings-row">
+              <span>Loop</span>
+              <label class="flex"
+                ><input type="checkbox" id="loopToggle" />
+                <span class="muted" style="font-size: 12px; margin-left: 6px"
+                  >Repeat</span
+                ></label
+              >
+            </div>
+
+            <div class="settings-row">
+              <span>Shuffle</span>
+              <label class="flex"
+                ><input type="checkbox" id="shuffleToggle" />
+                <span class="muted" style="font-size: 12px; margin-left: 6px"
+                  >Random</span
+                ></label
+              >
+            </div>
+
+            <div style="margin-top: 8px; font-size: 13px; color: var(--muted)">
+              Theme
+            </div>
+            <div class="theme-picker">
+              <div
+                class="theme-swatch"
+                data-theme="theme-neon"
+                title="Neon"
+                style="background: linear-gradient(90deg, #00f5ff, #00ffa6)"
+              ></div>
+              <div
+                class="theme-swatch"
+                data-theme="theme-glass"
+                title="Glass"
+                style="background: linear-gradient(90deg, #90b9ff, #7aa2ff)"
+              ></div>
+              <div
+                class="theme-swatch"
+                data-theme="theme-anime"
+                title="Anime"
+                style="background: linear-gradient(90deg, #ff7ad9, #ff5edb)"
+              ></div>
+              <div
+                class="theme-swatch"
+                data-theme="theme-orange"
+                title="Orange fire"
+                style="background: linear-gradient(90deg, #ff8a65, #ffd89b)"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="time-row">
+          <div id="currentTime">0:00</div>
+          <div id="duration">0:00</div>
+        </div>
+
+        <div class="progress-bar" id="progressBar" title="Seek">
+          <div class="progress" id="progress"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="left-controls">
+          <button class="icon-btn" id="prevBtn" title="Previous">
+            <i class="fas fa-backward"></i>
+          </button>
+          <button class="icon-btn" id="rewindBtn" title="-10s">
+            <i class="fas fa-rotate-left"></i>
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px">
+          <button class="play-btn" id="playBtn" title="Play / Pause">
+            <i id="playIcon" class="fas fa-play"></i>
+          </button>
+        </div>
+
+        <div class="right-controls">
+          <button class="icon-btn" id="forwardBtn" title="+10s">
+            <i class="fas fa-rotate-right"></i>
+          </button>
+          <button class="icon-btn" id="nextBtn" title="Next">
+            <i class="fas fa-forward"></i>
+          </button>
+
+          <div class="vol-wrap" title="Volume">
+            <i class="fas fa-volume-up"></i>
+            <input
+              id="volumeSlider"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.9"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <br><section class="rec">
