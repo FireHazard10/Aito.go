@@ -228,15 +228,17 @@ h2 {
         grid-template-columns: 280px 1fr;
         gap: 20px;
         max-width: 1400px;
-        margin:  auto;
-        margin-top: 20px;
+        margin: 20px auto;
         padding: 0 10px;
       }
 
       .listof {
         height: 100%;
         overflow-y: auto;
-        max-height: 600px;
+        max-height: 700px;
+        scrollbar-width: thin; 
+    /* The first color is the thumb, the second is the track */
+    scrollbar-color: var(--accent, #ff416c) var(--bg, #1a202c);
       }
       .listof h1 {
         font-size: 1.5rem;
@@ -267,6 +269,35 @@ h2 {
         color: #000;
       }
 
+      /* 1. Define the size and track of the scrollbar */
+.listof::-webkit-scrollbar {
+    width: 10px; /* Width of the vertical scrollbar */
+    height: 10px; /* Height of the horizontal scrollbar */
+}
+
+/* 2. Style the TRACK (the background of the scrollbar) */
+.listof::-webkit-scrollbar-track {
+    background: var(--bg, #1a202c); /* Use a dark background color or your CSS variable */
+    border-radius: 10px;
+}
+
+/* 3. Style the THUMB (the draggable part) */
+.listof::-webkit-scrollbar-thumb {
+    background-color: var(--accent, #ff416c); /* Use your accent color */
+    border-radius: 10px;
+    border: 2px solid var(--bg, #1a202c); /* Optional: Padding around the thumb */
+}
+
+/* 4. Optional: Hover state for the thumb */
+.listof::-webkit-scrollbar-thumb:hover {
+    background-color: #ff6a88; /* A slightly lighter shade of your accent */
+}
+
+/* 5. Optional: Style for the scrollbar corner (when both x and y scrollbars meet) */
+.listof::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
       /* --- 4. PLAYER CARD STYLES --- */
       .card {
         width: 100%;
@@ -279,6 +310,34 @@ h2 {
         position: relative;
         z-index: 10;
       }
+
+      /* Target the .card element when it is in standard fullscreen mode */
+.card:fullscreen {
+    /* Remove the bottom border in fullscreen */
+    border-bottom: none !important; 
+    /* Remove the box shadow for a cleaner fullscreen experience */
+    box-shadow: none !important; 
+    /* Ensure the background and backdrop filter are smooth */
+    background: black !important; /* or a solid background color */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Add vendor prefixes for maximum browser compatibility */
+.card:-webkit-full-screen {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.card:-moz-full-screen {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.card:-ms-fullscreen {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
 
       .poster {
         width: 100%;
@@ -352,41 +411,38 @@ h2 {
         background: linear-gradient(90deg, var(--accent), #ffd89b);
       }
 
-      /* Controls */
-      .controls {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        margin-top: 14px;
-      }
+ /* Controls */
+ .ctrl{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 14px;
+ }
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+}
 
-      .left-controls,
+.left-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+/* Updated Right Controls to justify the content and create space */
 .right-controls {
     display: flex;
     align-items: center;
-    gap: 10px; /* Ensures consistent spacing between buttons/volume on both sides */
+    /* Use space-between to push 'right-most-controls' away from the next/forward buttons */
+    justify-content: space-between; 
+    gap: 10px; /* Default gap between adjacent elements/groups */
 }
-      button.icon-btn {
-        background: rgba(255, 255, 255, 0.06);
-        border: none;
-        color: var(--text);
-        padding: 8px;
-        border-radius: 8px;
-        width: 44px;
-        height: 44px;
-        display: grid;
-        place-items: center;
-        cursor: pointer;
-        border-bottom: 3px solid var(--accent);
-        transition: 0.2s;
-      }
-      button.icon-btn:hover {
-        transform: scale(1.06);
-        background: rgba(255, 255, 255, 0.15);
-      }
 
-      .play-btn {
+ .play-btn {
         width: 66px;
         height: 66px;
         border-radius: 12px;
@@ -402,13 +458,31 @@ h2 {
       .play-btn:hover {
         transform: scale(1.05);
       }
-
-      .vol-wrap {
-    display: flex; 
-    align-items: center; 
-    gap: 8px; 
-    width: 100%; /* Increased from 80px to 100px for better slider visibility */
+/* NEW: Container to group fullscreen and volume and space them out */
+.right-most-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between the fullscreen button and volume wrapper */
+    margin-right: 0px; /* Add extra space to visually separate these controls */
 }
+
+button.icon-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: none;
+    color: var(--text);
+    padding: 8px;
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border-bottom: 3px solid var(--accent);
+    transition: 0.2s;
+}
+.vol-wrap { display: flex; align-items: center; gap: 8px; width: 100%;}
+
+/* ... rest of your icon-btn, play-btn, and vol-wrap styles ... */
       input[type="range"] {
         -webkit-appearance: none;
         width: 100%;
@@ -477,7 +551,7 @@ h2 {
         grid-template-columns: 45% 54%; /* Better ratio */
         gap: 0.2%;
         max-width: 1400px;
-        margin: 5px auto;
+        margin: 40px auto;
         padding: 0 10px;
       }
 
@@ -532,7 +606,7 @@ h2 {
         transform: translateY(-50%);
         pointer-events: none; /* Let clicks pass through except buttons */
       }
-.slider .slider-controls button {
+      .slider .slider-controls button {
         pointer-events: auto;
         background: rgba(248, 229, 229, 0.6);   
         color: white;
@@ -584,6 +658,20 @@ h2 {
         .One-plus {
           width: 100%;
         }
+
+        .mobile-menu .join {
+      background: linear-gradient(135deg, #ffc371, #ff8a65);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
       }
 
 
@@ -610,13 +698,12 @@ h2 {
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
-        <a href="aidox.html">Home</a>
-        <a href="page-1.html">Series</a>
-        <a href="A1-explore.html">Movies</a>
-        <a href="Ai-morden-cte.html">Genres</a>
-
-        <a href="#" class="cta" style="width: fit-content">Join Now</a>
-    </div>
+    <a href="aidox.html">Home</a>
+    <a href="page-1.html">Series</a>
+    <a href="A1-explore.html">Movies</a>
+    <a href="Ai-morden-cte.html">Genres</a>
+    <a href="Aimiddle-page.html" class="join">Join Now</a>
+  </div>
   </header>
 
   <div class="watch">
@@ -699,44 +786,53 @@ h2 {
               <div class="progress" id="progress"></div>
             </div>
           </div>
-
-          <div class="controls">
-            <div class="left-controls">
-              <button class="icon-btn" id="prevBtn">
-                <i class="fas fa-backward"></i>
-              </button>
-              <button class="icon-btn" id="rewindBtn">
-                <i class="fas fa-rotate-left"></i>
-              </button>
-            </div>
-            <button class="play-btn" id="playBtn">
-              <i id="playIcon" class="fas fa-play"></i>
+          <div class="ctrl">
+                <div class="controls">
+    <div class="left-controls">
+        <button class="icon-btn" id="prevBtn">
+            <i class="fas fa-backward"></i>
+        </button>
+        <button class="icon-btn" id="rewindBtn">
+            <i class="fas fa-rotate-left"></i>
+        </button>
+    </div>
+    <button class="play-btn" id="playBtn">
+        <i id="playIcon" class="fas fa-play"></i>
+    </button>
+    <div class="right-controls">
+        <button class="icon-btn" id="forwardBtn">
+            <i class="fas fa-rotate-right"></i>
+        </button>
+        <button class="icon-btn" id="nextBtn">
+            <i class="fas fa-forward"></i>
+        </button>
+        
+        
+    </div>
+</div>
+<div class="right-most-controls">
+            <button class="icon-btn" id="fullScreenBtn">
+                <i class="fas fa-expand"></i>
             </button>
-            <div class="right-controls">
-              <button class="icon-btn" id="forwardBtn">
-                <i class="fas fa-rotate-right"></i>
-              </button>
-              <button class="icon-btn" id="nextBtn">
-                <i class="fas fa-forward"></i>
-              </button>
-              <div class="vol-wrap">
+            <div class="vol-wrap">
                 <i class="fas fa-volume-up"></i>
                 <input
-                  id="volumeSlider"
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value="1"
+                    id="volumeSlider"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value="1"
                 />
-              </div>
             </div>
+        </div>
           </div>
+
         </div>
       </div>
   </div>
-    <br><br><br>
-    
+    <br>
+    <div id="followlong"></div>
 <div class="container">
   <div class="One-plus">
     <h2>Neon Requiem</h2>
@@ -907,8 +1003,23 @@ const video = document.getElementById("videoPlayer");
         { title: "Episode 7 – Unveiled", url: "#", src: "MEmu Music/Stay_-「AMV」-_Anime_MV(720p).mp4" },
         { title: "Episode 8 – Breaking Point", url: "#", src: "MEmu Music/The_Baddest___AMV___Anime_Mix(360p).mp4" },
         { title: "Episode 9 – Reversal", url: "#", src: "MEmu Music/Tokyo_Majin_Opening_1(480p).mp4" },
-        { title: "Episode 10 – Turning Tide", url: "#", src: "MEmu Music/Happy.mp4" }
-    ];
+        { title: "Episode 10 – Turning Tide", url: "#", src: "MEmu Music/Happy.mp4" },
+        { title: "Episode 11 – My Hero", url: "#", src: "MEmu Music/AnimePahe_Boku_no_Hero_Academia_-_169_1080p_SubsPlease.mp4" },
+        { title: "Episode 12 – Kon-k", url: "#", src: "MEmu Music/AnimePahe_Kami_no_Tou_2nd_Season_Eng_Dub_-_26_1080p_Yameii.mp4" },
+        { title: "Episode 13 – Oni", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 14 – Finals", url: "#", src: "MEmu Music/AnimePahe_Long_Zu_II_-_Daowangzhe_Zhi_Tong_Chi_Dub_-_23_1080p_SubsPlease.mp4" },
+        { title: "Episode 15 – Oni", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 16 – Hero's Quest", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 17 – Lord of Goblins", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 18 – Invincible-x", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 19 – My Name", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 20 – Yugen-oh!", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 21 – Wish", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 22 – Star Born", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 23 – Encounter-x", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" },
+        { title: "Episode 24 – End-Sroll", url: "#", src: "MEmu Music/AnimePahe_Suki_demo_Kirai_na_Amanojaku_Eng_Dub_-_01_1080p_Netflix.mp4" }
+
+        ];
 
     // DOM Elements
     const playerRoot = document.getElementById('player-root');
@@ -1077,6 +1188,30 @@ const video = document.getElementById("videoPlayer");
         if(videoEl) videoEl.playbackRate = parseFloat(e.target.value);
     });
 
+    // NEW: Full Screen Toggle Logic
+fullScreenBtn.addEventListener('click', () => {
+    // Check if the document is currently in fullscreen mode
+    if (!document.fullscreenElement) {
+        // Request fullscreen on the player root element
+        if (playerRoot.requestFullscreen) {
+            playerRoot.requestFullscreen();
+        } else if (playerRoot.webkitRequestFullscreen) { /* Safari */
+            playerRoot.webkitRequestFullscreen();
+        } else if (playerRoot.msRequestFullscreen) { /* IE11 */
+            playerRoot.msRequestFullscreen();
+        }
+    } else {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+    }
+});
+
     // Initial Load
     loadEpisode(0);
 function toggleMenu() {
@@ -1086,4 +1221,3 @@ function toggleMenu() {
 </script>
 <script src="easypages.js"></script>
 </html>
-
