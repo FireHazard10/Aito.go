@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Grid alphcard System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="pages.css" />
+    <style>
+      :root {
+        --accent: #e69500;
+        --glass-bg: rgba(255, 255, 255, 0.08);
+        --glass-border: rgba(255, 255, 255, 0.15);
+        --text-main: #fff8f0;
+        --text-muted: rgba(255, 255, 255, 0.65);
+      }
+
+      /* --- Main --- */
+      body {
+        background: radial-gradient(circle at top, #0d0d0d, #000);
+        font-family: "Poppins", sans-serif;
+      }
+
+      main {
+        padding: 40px 24px;
+        max-width: 1600px;
+        margin: auto;
+      }
+
+      /* --- Grid --- */
+      #alphcard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 14px;
+      }
+
+      /* --- Card --- */
+      .alphcard {
+        display: flex;
+        height: 110px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.02)
+        );
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid var(--glass-border);
+        border-left: 4px solid var(--accent);
+        border-radius: 14px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+
+      .alphcard:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 18px 40px rgba(230, 149, 0, 0.15);
+      }
+
+      /* --- Image --- */
+      .alphcard-img {
+        width: 42%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .alphcard-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .alphcard:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Gradient overlay */
+      .alphcard-img::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
+      }
+
+      /* --- Info --- */
+      .alphcard-info {
+        width: 58%;
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .alphcard-title {
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .alphcard-date {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      /* --- Load More Button --- */
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin: 50px 0 20px;
+      }
+
+      .next-btn {
+        /* 1. Core Layout & Sizing */
+        position: relative;
+        padding: 20px 50px;
+        font-size: 2rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        background: transparent;
+        outline: none;
+        transition: transform 0.1s ease;
+
+        /* Font styling to look engraved */
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.5),
+          /* Top shadow */ 0px 2px 0px rgba(255, 255, 255, 0.4),
+          /* Bottom highlight */ 0px 4px 5px rgba(0, 0, 0, 0.5); /* Soft drop shadow */
+      }
+
+      /* 2. The "Gold" Rim (The main button shape) */
+      .next-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 50px; /* Pill shape */
+
+        /* Creating the metallic gold look with gradients */
+        background: rgba(255, 255, 255, 0.08);
+
+        /* The 3D Depth (The sides of the button) */
+        box-shadow: 0px 10px 0px #e69500,
+          /* Dark gold base */ 0px 10px 10px rgba(0, 0, 0, 0.4),
+          /* Drop shadow on floor */ inset 0px 2px 0px rgba(255, 255, 255, 0.5); /* Top shine */
+
+        transition: all 0.1s;
+      }
+
+      /* 3. The "Gem" Center (The inner blue part) */
+      .next-btn::after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        right: 6px;
+        bottom: 8px; /* Inset from the gold rim */
+        z-index: -1;
+        border-radius: 44px;
+
+        /* Deep Blue Gem Gradient */
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.02)
+        );
+
+        /* Inner shadows to make it look concave or set inside the gold */
+        box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.5),
+          inset 0px 2px 2px rgba(255, 255, 255, 0.4),
+          /* Top gloss */ 0px 2px 0px rgba(255, 255, 255, 0.1);
+      }
+
+      /* --- INTERACTION STATES --- */
+
+      /* Hover State: Brighter */
+      .next-btn:hover::after {
+        filter: brightness(1.2); /* Make the gem glow */
+      }
+
+      /* Active/Click State: Pressing down */
+      .next-btn:active {
+        transform: translateY(10px); /* Move button down */
+      }
+
+      .next-btn:active::before {
+        box-shadow: 0px 0px 0px #5e4600,
+          /* Remove the "height" shadow */ 0px 0px 5px rgba(0, 0, 0, 0.4),
+          /* Reduce drop shadow */ inset 0px 2px 0px rgba(255, 255, 255, 0.5);
+      }
+
+      .next-btn:active::after {
+        /* Adjust inner gem slightly for press feel */
+        top: 6px;
+        bottom: 6px;
+      }
+
+      .alphcard {
+        animation: fadeUp 0.5s ease both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <main>
+      <div id="alphcard-grid" class="alph-grid"></div>
+
+      <div class="button-container">
+        <button id="next-btn" class="next-btn">Load More</button>
+      </div>
+    </main>
+
+    <div id="footer"></div>
+    <script src="easypages.js"></script>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("active");
+      }
+
+      // --- 1. DATA SOURCE ---
+      // Add new items here. Order doesn't matter (JS will sort them).
+      const alphcardData = [
+        {
+          title: "1 View",
+          date: "Year: 20xx",
+          img: "Pictures01/2ed8c165-2445-4ad2-8d52-857c851e42c0.jpeg",
+        },
+        {
+          title: "Ocean Sunset",
+          date: "Year: 20xx",
+          img: "Pictures01/31ccff0a-3c35-4a77-8f6e-581c9d349a91.jpeg",
+        },
+        {
+          title: "Forest Trail",
+          date: "Year: 20xx",
+          img: "Pictures01/37f58d91-3a7b-4df0-9f73-a3237c29b7b3.jpeg",
+        },
+        {
+          title: "City Lights",
+          date: "Year: 20xx",
+          img: "Pictures01/39f2cb49-629d-481e-9cb7-b7a3d45ff778.jpeg",
+        },
+        {
+          title: "Desert Dunes",
+          date: "Year: 20xx",
+          img: "Pictures01/59818a1b-626a-466e-9937-3ade1141a517.jpeg",
+        },
+        {
+          title: "Arctic Ice",
+          date: "Year: 20xx",
+          img: "Pictures01/63506633-9c3e-47ca-849c-be6e590edf5c.jpeg",
+        },
+        {
+          title: "Zebra Crossing",
+          date: "Year: 20xx",
+          img: "Pictures01/6a7b916c-c434-467b-a1a7-9f67e5ff05f5.jpeg",
+        },
+        {
+          title: "Bear Life",
+          date: "Year: 20xx",
+          img: "Pictures01/9ad3b05f-0fca-4a10-9392-67eb7a979e67.jpeg",
+        },
+        {
+          title: "Eagle Eye",
+          date: "Year: 20xx",
+          img: "Pictures01/a8c68b34-2d2e-44fd-8c91-28d973b35d89.jpeg",
+        },
+        {
+          title: "River Flow",
+          date: "Year: 20xx",
+          img: "Pictures01/Anime wallpaper.jpeg",
+        },
+        {
+          title: "Alpine Lodge",
+          date: "Year: 20xx",
+          img: "Pictures01/c4de5292-1d44-49bc-a730-e7bf52c0d9ec.jpeg",
+        },
+        {
+          title: "Urban Exploration",
+          date: "Year: 20xx",
+          img: "Pictures01/bac6b359-e4aa-4d95-ba03-161f6cbecca9.jpeg",
+        },
+        {
+          title: "Deep Space",
+          date: "Year: 20xx",
+          img: "Pictures01/Silent-Witch-Chinmoku-no-Majo-no-Kakushigoto.webp",
+        },
+        {
+          title: "Ancient Ruins",
+          date: "Year: 20xx",
+          img: "Pictures01/DESIGN WALLPAPER ANIME _3.jpeg",
+        },
+        {
+          title: "Mountain View",
+          date: "Year: 20xx",
+          img: "Pictures01/2ed8c165-2445-4ad2-8d52-857c851e42c0.jpeg",
+        },
+        {
+          title: "Ocean Sunset",
+          date: "Year: 20xx",
+          img: "Pictures01/31ccff0a-3c35-4a77-8f6e-581c9d349a91.jpeg",
+        },
+        {
+          title: "Forest Trail",
+          date: "Year: 20xx",
+          img: "Pictures01/37f58d91-3a7b-4df0-9f73-a3237c29b7b3.jpeg",
+        },
+        {
+          title: "City Lights",
+          date: "Year: 20xx",
+          img: "https://picsum.photos/id/1019/200/200",
+        },
+        {
+          title: "Desert Dunes",
+          date: "Year: 20xx",
+          img: "Pictures01/59818a1b-626a-466e-9937-3ade1141a517.jpeg",
+        },
+        {
+          title: "Arctic Ice",
+          date: "Year: 20xx",
+          img: "https://picsum.photos/id/1021/200/200",
+        },
+        {
+          title: "Zebra Crossing",
+          date: "Year: 20xx",
+          img: "Pictures01/6a7b916c-c434-467b-a1a7-9f67e5ff05f5.jpeg",
+        },
+        {
+          title: "Bear Life",
+          date: "Year: 20xx",
+          img: "Pictures01/9ad3b05f-0fca-4a10-9392-67eb7a979e67.jpeg",
+        },
+        {
+          title: "Eagle Eye",
+          date: "Year: 20xx",
+          img: "Pictures01/a8c68b34-2d2e-44fd-8c91-28d973b35d89.jpeg",
+        },
+        {
+          title: "River Flow",
+          date: "Year: 20xx",
+          img: "Pictures01/Anime wallpaper.jpeg",
+        },
+        {
+          title: "Alpine Lodge",
+          date: "Year: 20xx",
+          img: "Pictures01/c4de5292-1d44-49bc-a730-e7bf52c0d9ec.jpeg",
+        },
+        {
+          title: "Urban Exploration",
+          date: "Year: 20xx",
+          img: "Pictures01/bac6b359-e4aa-4d95-ba03-161f6cbecca9.jpeg",
+        },
+        {
+          title: "Deep Space",
+          date: "Year: 20xx",
+          img: "Pictures01/Silent-Witch-Chinmoku-no-Majo-no-Kakushigoto.webp",
+        },
+        {
+          title: "Ancient Ruins",
+          date: "Year: 20xx",
+          img: "Pictures01/DESIGN WALLPAPER ANIME _3.jpeg",
+        },
+        {
+          title: "Mountain View",
+          date: "Year: 20xx",
+          img: "Pictures01/2ed8c165-2445-4ad2-8d52-857c851e42c0.jpeg",
+        },
+        {
+          title: "Ocean Sunset",
+          date: "Year: 20xx",
+          img: "Pictures01/31ccff0a-3c35-4a77-8f6e-581c9d349a91.jpeg",
+        },
+        {
+          title: "Forest Trail",
+          date: "Year: 20xx",
+          img: "Pictures01/37f58d91-3a7b-4df0-9f73-a3237c29b7b3.jpeg",
+        },
+        {
+          title: "City Lights",
+          date: "Year: 20xx",
+          img: "https://picsum.photos/id/1019/200/200",
+        },
+        {
+          title: "Desert Dunes",
+          date: "Year: 20xx",
+          img: "Pictures01/59818a1b-626a-466e-9937-3ade1141a517.jpeg",
+        },
+        {
+          title: "Arctic Ice",
+          date: "Year: 20xx",
+          img: "https://picsum.photos/id/1021/200/200",
+        },
+        {
+          title: "Zebra Crossing",
+          date: "Year: 20xx",
+          img: "Pictures01/6a7b916c-c434-467b-a1a7-9f67e5ff05f5.jpeg",
+        },
+        {
+          title: "Bear Life",
+          date: "Year: 20xx",
+          img: "Pictures01/9ad3b05f-0fca-4a10-9392-67eb7a979e67.jpeg",
+        },
+        {
+          title: "Eagle Eye",
+          date: "Year: 20xx",
+          img: "Pictures01/a8c68b34-2d2e-44fd-8c91-28d973b35d89.jpeg",
+        },
+        {
+          title: "River Flow",
+          date: "Year: 20xx",
+          img: "Pictures01/Anime wallpaper.jpeg",
+        },
+        {
+          title: "Alpine Lodge",
+          date: "Year: 20xx",
+          img: "Pictures01/c4de5292-1d44-49bc-a730-e7bf52c0d9ec.jpeg",
+        },
+        {
+          title: "Urban Exploration",
+          date: "Year: 20xx",
+          img: "Pictures01/bac6b359-e4aa-4d95-ba03-161f6cbecca9.jpeg",
+        },
+        {
+          title: "Deep Space",
+          date: "Year: 20xx",
+          img: "Pictures01/Silent-Witch-Chinmoku-no-Majo-no-Kakushigoto.webp",
+        },
+        {
+          title: "Ancient Ruins",
+          date: "Year: 20xx",
+          img: "Pictures01/DESIGN WALLPAPER ANIME _3.jpeg",
+        },
+        {
+          title: "Mountain View",
+          date: "Year: 20xx",
+          img: "Pictures01/2ed8c165-2445-4ad2-8d52-857c851e42c0.jpeg",
+        },
+        {
+          title: "Ocean Sunset",
+          date: "Year: 20xx",
+          img: "Pictures01/31ccff0a-3c35-4a77-8f6e-581c9d349a91.jpeg",
+        },
+        {
+          title: "Forest Trail",
+          date: "Year: 20xx",
+          img: "Pictures01/37f58d91-3a7b-4df0-9f73-a3237c29b7b3.jpeg",
+        },
+        {
+          title: "City Lights",
+          date: "Year: 20xx",
+          img: "https://picsum.photos/id/1019/200/200",
+        },
+        {
+          title: "Desert Dunes",
+          date: "Year: 20xx",
+          img: "Pictures01/59818a1b-626a-466e-9937-3ade1141a517.jpeg",
+        },
+        {
+          title: "Arctic Ice",
+          date: "Year: 20xx",
+          img: "https://picsum.photos/id/1021/200/200",
+        },
+        {
+          title: "Zebra Crossing",
+          date: "Year: 20xx",
+          img: "Pictures01/6a7b916c-c434-467b-a1a7-9f67e5ff05f5.jpeg",
+        },
+        {
+          title: "Bear Life",
+          date: "Year: 20xx",
+          img: "Pictures01/9ad3b05f-0fca-4a10-9392-67eb7a979e67.jpeg",
+        },
+        {
+          title: "Eagle Eye",
+          date: "Year: 20xx",
+          img: "Pictures01/a8c68b34-2d2e-44fd-8c91-28d973b35d89.jpeg",
+        },
+        {
+          title: "River Flow",
+          date: "Year: 20xx",
+          img: "Pictures01/Anime wallpaper.jpeg",
+        },
+        {
+          title: "Alpine Lodge",
+          date: "Year: 20xx",
+          img: "Pictures01/c4de5292-1d44-49bc-a730-e7bf52c0d9ec.jpeg",
+        },
+        {
+          title: "Urban Exploration",
+          date: "Year: 20xx",
+          img: "Pictures01/bac6b359-e4aa-4d95-ba03-161f6cbecca9.jpeg",
+        },
+        {
+          title: "Deep Space",
+          date: "Year: 20xx",
+          img: "Pictures01/Silent-Witch-Chinmoku-no-Majo-no-Kakushigoto.webp",
+        },
+        {
+          title: "Ancient Ruins",
+          date: "Year: 20xx",
+          img: "Pictures01/DESIGN WALLPAPER ANIME _3.jpeg",
+        },
+      ];
+
+      // --- 2. CONFIGURATION ---
+      const itemsPerPage = 25; // How many alphcards to show per click
+      let currentIndex = 0;
+
+      const gridContainer = document.getElementById("alphcard-grid");
+      const nextBtn = document.getElementById("next-btn");
+
+      // --- 3. SORTING FUNCTION ---
+      // Sorts the array alphabetically by title
+      function sortData() {
+        alphcardData.sort((a, b) => {
+          const titleA = a.title.toUpperCase();
+          const titleB = b.title.toUpperCase();
+          if (titleA < titleB) return -1;
+          if (titleA > titleB) return 1;
+          return 0;
+        });
+      }
+
+      // --- 4. RENDER FUNCTION ---
+      function loadalphcards() {
+        // Get the slice of data we want to show
+        const nextBatch = alphcardData.slice(
+          currentIndex,
+          currentIndex + itemsPerPage
+        );
+
+        nextBatch.forEach((item) => {
+          // Create alphcard Container
+          const alphcard = document.createElement("div");
+          alphcard.classList.add("alphcard");
+
+          // Create Image Section (Left)
+          const imgContainer = document.createElement("div");
+          imgContainer.classList.add("alphcard-img");
+          const img = document.createElement("img");
+          img.src = item.img;
+          img.alt = item.title;
+          imgContainer.appendChild(img);
+
+          // Create Info Section (Right)
+          const infoContainer = document.createElement("div");
+          infoContainer.classList.add("alphcard-info");
+
+          const title = document.createElement("div");
+          title.classList.add("alphcard-title");
+          title.textContent = item.title;
+
+          const date = document.createElement("div");
+          date.classList.add("alphcard-date");
+          date.textContent = item.date;
+
+          infoContainer.appendChild(title);
+          infoContainer.appendChild(date);
+
+          // Assemble alphcard
+          alphcard.appendChild(imgContainer);
+          alphcard.appendChild(infoContainer);
+
+          // Add to Grid
+          gridContainer.appendChild(alphcard);
+        });
+
+        // Update Index
+        currentIndex += itemsPerPage;
+
+        // Hide button if we reached the end of the list
+        if (currentIndex >= alphcardData.length) {
+          nextBtn.classList.add("hidden");
+        }
+      }
+
+      // --- 5. INITIALIZATION ---
+      // Sort data first
+      sortData();
+      // Load initial batch
+      loadalphcards();
+
+      // --- 6. EVENT LISTENER ---
+      nextBtn.addEventListener("click", loadalphcards);
+    </script>
+  </body>
+</html>
