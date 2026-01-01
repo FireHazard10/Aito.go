@@ -1213,8 +1213,34 @@ function buildEpisodeList() {
 /* =========================================================================
    5. IMAGE SLIDER LOGIC (Removed/Commented out to prevent errors)
    ========================================================================= */
-// The image slider elements (sliderImages, sliderNext, sliderPrev) were not
-// present in the provided HTML. This section is removed to prevent errors.
+ const sliderImages = document.getElementById("sliderImages");
+      const sliderPrev = document.getElementById("sliderPrev");
+      const sliderNext = document.getElementById("sliderNext");
+      const totalSlides = document.querySelectorAll(".slider .image").length;
+      let currentSlide = 0;
+
+      function updateSlider() {
+        const translateX = -(currentSlide * 100);
+        sliderImages.style.transform = `translateX(${translateX}%)`;
+      }
+
+      sliderNext.addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+      });
+
+      sliderPrev.addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider();
+      });
+
+      // Auto-slide every 5 seconds
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+      }, 5000);
+
+  
 
 
 /* =========================================================================
@@ -1344,3 +1370,4 @@ function toggleMenu() {
 </script>
 <script src="easypages.js"></script>
 </html>
+
