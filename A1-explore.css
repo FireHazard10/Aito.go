@@ -219,6 +219,7 @@ main.movie-page {
   padding: 60px 24px;
   display: flex;
   justify-content: center;
+  align-text:justify ;
 }
 
 .movie-card {
@@ -518,3 +519,4 @@ footer hr {
     align-items: center;
   }
 }
+
