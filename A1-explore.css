@@ -1,26 +1,33 @@
+/* ---------- Modern Reset ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, sans-serif;
 }
-/* ---------- Base Styles ---------- */
+
 body {
-  /*margin: 0;*/
-  font-family: "Poppins", sans-serif;
-  background: #0a0a0a;
+  background: #050505; /* Deeper black for premium feel */
   color: #fff;
   overflow-x: hidden;
 }
 
 header {
-  position: relative;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
-  overflow: hidden;
+  position: absolute; /* Allows content to sit underneath */
+  /*top: 0;
+      left: 0;*/
+  width: 100%;
+  z-index: 100;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    transparent 100%
+  );
+  transition: background 0.3s ease;
 }
 
-.container {
-  max-width: 1200px;
+.xeno {
+  /*max-width: 1200px;*/
   margin: 0 auto;
   padding: 1.5rem;
   display: flex;
@@ -119,6 +126,7 @@ nav a:hover::after {
 }
 
 .hero h1 {
+  color: var(--text);
   font-size: 2.5rem;
   font-weight: 800;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
@@ -146,18 +154,18 @@ nav a:hover::after {
 }
 
 .hero a:hover {
-  background: #ffc371;
+  background: #be185d;
 }
 
-.bg-image {
-  position: absolute;
-  inset: 0;
-  background: transparent;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.2;
-  z-index: -1;
-}
+/*.bg-image {
+    position: absolute;
+    inset: 0;
+    background-image: url(❤️X/anime-girl-kazari-genshin-impact-spring-mask-5k-3840x2160-7950.jpg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+  }*/
 
 @media (max-width: 768px) {
   nav,
@@ -169,27 +177,43 @@ nav a:hover::after {
     display: block;
   }
 
+  .mobile-menu .join {
+    background: linear-gradient(135deg, #ffc371, #ff8a65);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   .mobile-menu.active {
     display: flex;
   }
 }
 
-main.movie-page {
+/* ---------- Transparent Header ---------- */
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* ---------- Section 1: Hero ---------- */
+/* ---------- Hero Section ---------- */
 .movie-xero {
   position: relative;
   width: 100%;
-  height: 70vh;
-  overflow: hidden;
+  height: 80vh; /* Taller hero */
 }
 
-.movie-xero .xero-img {
+.xero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -198,164 +222,112 @@ main.movie-page {
 .xero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.9)
-  );
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 2rem;
+  /* Darken bottom for smooth transition to content */
+  background: linear-gradient(to top, #050505 0%, transparent 50%);
 }
 
-.xero-overlay h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-
-/* ---------- Section 2: Description ---------- */
+/* ---------- Overlapping Detail Section ---------- */
 .movie-description {
-  padding: 60px 24px;
-  display: flex;
-  justify-content: center;
-  align-text:justify ;
+  position: relative;
+  padding: 0 2rem 4rem 2rem;
+  margin-top: -150px; /* This pulls the section UP into the image */
+  z-index: 10;
 }
 
 .movie-card {
   display: flex;
-  gap: 28px;
-  max-width: 1500px;
-  width: 100%;
-  /*background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.02)
-  );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px)
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);*/
-  padding: 28px;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* Poster */
+/* The Connecting Poster */
 .poster-wrap {
-  position: relative;
   flex-shrink: 0;
+  transform: translateY(-50px); /* Lifts poster even higher */
 }
 
 .poster-wrap img {
-  width: 220px;
-  height: 320px;
+  width: 260px;
+  height: 380px;
   object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
 }
 
-/* Info */
+/* Info Section */
 .movie-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 600px;
+  margin-top: 60px; /* Aligns text with the bottom of the overlap */
 }
 
 .movie-title {
-  font-family: "M PLUS Rounded 1c", sans-serif;
-  font-size: 2rem;
-  color: #fff;
-  margin-bottom: 10px;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
 }
 
 .meta {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
-  margin-bottom: 16px;
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  color: #bbb;
+  margin-bottom: 2rem;
+}
+
+.rating {
+  border: 1px solid #ff8a65;
+  color: #ff8a65;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: bold;
 }
 
 .synopsis {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  margin-bottom: 22px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  max-width: 700px;
 }
 
-/* Buttons */
+/* ---------- Buttons ---------- */
 .actions {
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .watch-me {
-  background: rgba(0, 0, 0, 0.2);
-  border: 3px #ff8a65 solid;
-  color: #ffff;
-  padding: 12px 24px;
+  background: #ff8a65;
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
   font-weight: 700;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3ms ease-in;
+  transition: all 0.3s ease;
 }
 
 .watch-me:hover {
-  background: linear-gradient(135deg, #ffc371, #ff8a65);
-  border: 3px white solid;
+  background: #fff;
+  color: #000;
+  transform: scale(1.05);
 }
 
 .add-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
-  padding: 12px 22px;
-  border-radius: 12px;
+  padding: 14px 28px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.watch-me:hover,
-.add-btn:hover {
-  transform: translateY(-2px);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .movie-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .poster-wrap img {
-    width: 180px;
-    height: 260px;
-  }
-
-  .movie-info {
-    align-items: center;
-  }
-
-  .meta {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 992px) {
-}
-
-/* Mobile screens (≤ 600px) */
-@media (max-width: 600px) {
-  .poster img {
-    width: 100%;
-    height: 350px;
-    max-width: 250px;
-  }
-}
-
-/* ---------- Section 3: Matte Blur Overlay ---------- */
+/* ---------- Content Grid ---------- */
 .movie-extra {
   position: relative;
   border-bottom: 3px #ff8a65 solid;
@@ -453,10 +425,31 @@ main.movie-page {
   font-weight: 600;
 }
 
-/* ---------- Responsive ---------- */
+.section-label {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  border-left: 4px solid #ff8a65;
+  padding-left: 15px;
+}
+
+/* ---------- Responsive Adjustments ---------- */
 @media (max-width: 768px) {
-  .hero-overlay h1 {
-    font-size: 1.8rem;
+  .movie-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .movie-title {
+    font-size: 2.2rem;
+  }
+
+  .poster-wrap {
+    transform: translateY(-80px);
+  }
+
+  .movie-info {
+    margin-top: -60px;
   }
 }
 
@@ -519,4 +512,3 @@ footer hr {
     align-items: center;
   }
 }
-
